@@ -1,0 +1,462 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+
+    <title>搜融好车</title>
+
+    <link rel="stylesheet" id='camera-css' href="css/camera.css" type="text/css" media="all">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="css/list2.css" />
+    <link rel="stylesheet" href="css/my.css" >
+    <link rel="stylesheet" type="text/css" href="css/new_headfoot.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="css/rocketTop.css">
+
+    <style>
+        @media screen and (max-width: 423px){
+            .mobile{
+                font-size: 1em;
+                color: white;
+            }
+        }
+        @media screen and (min-width: 768px){
+            .mobile{
+                font-size: 1.7em;
+                color: white;
+            }
+        }
+        @media screen and (min-width: 320px) and (max-width: 321px){
+            .mobile_price{
+                font-size: 1em;
+                color: white;
+            }
+            #price{
+                margin: 3% 6%;
+            }
+            .load-more{
+                margin-top: -2vw;
+            }
+        }
+        #logo-car{
+            display:inline-block;
+            width:10vw;
+            height:5vw;
+            background: url(images/car-in-logo.png) no-repeat;
+            background-size: 100%;
+            position: relative;
+            bottom: 4.5vw;
+            left: 2vw;
+        }
+        @media screen and (min-width: 322px) and (max-width: 374px){
+            .mobile_price{
+                font-size: 1.14em;
+                color: white;
+            }
+            #price{
+                margin: 3% 6%;
+            }
+            #logo-car{
+                display:inline-block;
+                width:10vw;
+                height:3vw;
+                background: url(images/car-in-logo.png) no-repeat;
+                background-size: 100%;
+                position: relative;
+                bottom: 6vw;
+                left: 2vw;
+            }
+            .load-more{
+                margin-top: -1vw;
+            }
+        }
+        @media screen and (min-width: 375px) and (max-width: 413px){
+            .mobile_price{
+                font-size: 1.2em;
+                color: white;
+            }
+            #price{
+                margin: 3% 6%;
+            }
+            #logo-car{
+                display:inline-block;
+                width:10vw;
+                height:3vw;
+                background: url(images/car-in-logo.png) no-repeat;
+                background-size: 100%;
+                position: relative;
+                bottom: 6vw;
+                left: 2vw;
+            }
+        }
+
+        @media screen and (min-width: 414px) and (max-width: 500px){
+            .mobile_price{
+                font-size: 1.3em;
+                color: white;
+            }
+            #price{
+                margin: 3% 6%;
+            }
+            #logo-car{
+                display:inline-block;
+                width:10vw;
+                height:4vw;
+                background: url(images/car-in-logo.png) no-repeat;
+                background-size: 100%;
+                position: relative;
+                bottom: 5vw;
+                left: 2vw;
+            }
+        }
+        @media screen and (min-width: 500px) and (max-width: 600px){
+            .mobile_price{
+                font-size: 1.4em;
+                color: white;
+            }
+            #price{
+                margin: 3% 6%;
+            }
+            #logo-car{
+                display:inline-block;
+                width:10vw;
+                height:4vw;
+                background: url(images/car-in-logo.png) no-repeat;
+                background-size: 100%;
+                position: relative;
+                bottom: 4vw;
+                left: 2vw;
+            }
+        }
+        @media screen and (min-width: 600px) and (max-width: 767px){
+            .mobile_price{
+                font-size: 1.8em;
+                color: white;
+            }
+            #price{
+                margin: 2% 6%;
+            }
+            #logo-car{
+                display:inline-block;
+                width:10vw;
+                height:3vw;
+                background: url(images/car-in-logo.png) no-repeat;
+                background-size: 100%;
+                position: relative;
+                bottom: 4vw;
+                left: 2vw;
+            }
+        }
+        @media screen and (min-width: 768px){
+            .mobile_price{
+                font-size: 2.4em;
+                color: white;
+            }
+            #price{
+                margin: 2% 6%;
+            }
+            #logo-car{
+                display:inline-block;
+                width:10vw;
+                height:3vw;
+                background: url(images/car-in-logo.png) no-repeat;
+                background-size: 100%;
+                position: relative;
+                bottom: 5vw;
+                left: 2vw;
+            }
+            .bottom-content a{
+                font-size: 4vw;
+            }
+            .load-more{
+                margin-top: 2vw;
+            }
+        }
+        @media screen and (min-width: 1024px){
+            .mobile_price{
+                font-size: 2.8em;
+                color: white;
+            }
+            .load-more{
+                margin-top:3vw;
+            }
+        }
+        .car-sign-font{
+            margin-top: 5%;
+            font-size: 4vw;
+        }
+        .hint{text-align: center;color: orangered;border: 1px orangered solid}
+        .hint .layui-layer-content{padding:5vw 0vw;}
+        .camera_caption{
+            text-align: center;
+            font-size: 4vw;
+        }
+    </style>
+</head>
+
+<body>
+
+
+
+<!-- 中间内容 -->
+<div id="content-wrap" >
+        <div id = "logo"  style="text-align: center;width: auto;background: black;padding-top: 3%;z-index: 9999;" >
+            <div>
+                <img src="images/logo-without-car.png" style="width: 70%;height:70%;">
+            </div>
+            <div id="logo-car" class="animated"></div>
+        </div>
+        <!-- 顶部搜索框 -->
+    <div class="header-navigation" id="nav-bar">
+        <div style="float:left;text-align: center;margin: 2% 0;width: 13%">
+            <a class="new-btn-return" href="javascript:window.history.go(-1)"> <span class="glyphicon glyphicon-chevron-left" style="font-size: 6vw;color: rgb(205, 205,205)"></span></a>
+        </div>
+        <div style="width: 70%;float: left">
+            <div class="div_input">
+                <form>
+                    <input type="text" placeholder="搜索从这里开始..." style="width: 80%">
+                    <button type="submit" ><img src="images/steering_wheel.png" style="width: 5vw;height: 5vw;"></button>
+                </form>
+            </div>
+        </div>
+        <div style="float: right;text-align: center;margin: 2% 0;width: 13%" class="toggle-button-userinfo">
+            <img src="images/meun.png" style="width:45%;height: 78%">
+        </div>
+    </div>
+
+
+        <div data-slideout-ignore>
+            <div style="padding-bottom: 2vh" >
+                <div style="background-color: rgb(41,41,41);height: 2vw"></div>
+                <div style="background-color: rgb(113,113,113);height: 1vw"></div>
+                <div style="background-color: rgb(160,160,160);height: 1vw"></div>
+                <div style="background-color: rgb(208,208,208);height: 1vw"></div>
+            </div>
+            <div class="car-list-wrap boxwrap" >
+                <div class="carlist-inner">
+                    <ul class=" carlist-ul-horizontal">
+                        <li>
+                            <a href='xiangqing.html'  >
+                                <div class='car-img'>
+                                    <img src='http://img8.taoche.cn/1d/021701jb3s.jpg' class='' data-original='http://img8.taoche.cn/1d/021701jb3s.jpg' onerror="javascript:this.src='http://img5.taoche.cn/1d/021500nc86.png';" >
+                                </div>
+                                <div class='car-txt'><p class='name'>本田CR-V 2010款 都市版自动档 Lxi AT</p>
+                                    <p class='time'>2012年</p>
+                                    <p class='pri' style="display: inline-block;">搜融：<p class='pri'  style="display: inline-block;">11.50万</p></p>
+                                    <p class='pri' style="display: inline-block;color: grey">市价：<p class='pri' style="display: inline-block;color: grey;text-decoration:line-through">12.50万</p></p>
+                                </div></a>
+                        </li>
+                        <li id='li13311656'>
+                            <a  href='xiangqing.html'  >
+                                <div class='car-img'>
+                                    <img src='http://img6.taoche.cn/1d/021701evcu.jpg' class='' data-original='http://img6.taoche.cn/1d/021701evcu.jpg' onerror="javascript:this.src='http://img5.taoche.cn/1d/021500nc86.png';" >
+                                </div><div class='car-txt'><p class='name'>甲壳虫(进口) 2007款 2.0标配</p>
+                                <p class='time'>2007年</p>
+                                <p class='pri' style="display: inline-block;">搜融：<p class='pri'  style="display: inline-block;">11.50万</p></p>
+                                <p class='pri' style="display: inline-block;color: grey">市价：<p class='pri' style="display: inline-block;color: grey;text-decoration:line-through">12.50万</p></p>
+                            </div></a>
+                        </li>
+                        <li id='li13316386'><a  href='xiangqing.html' ><div class='car-img'>
+                            <img src='http://img8.taoche.cn/1d/021701g1pj.jpg' class='' data-original='http://img8.taoche.cn/1d/021701g1pj.jpg' onerror="javascript:this.src='http://img5.taoche.cn/1d/021500nc86.png';" >
+                        </div><div class='car-txt'><p class='name'>奔驰E级(进口) 2010款 E 300 优雅型 豪华版</p>
+                            <p class='time'>2011年</p>
+                            <p class='pri' style="display: inline-block;">搜融：<p class='pri'  style="display: inline-block;">11.50万</p></p>
+                            <p class='pri' style="display: inline-block;color: grey">市价：</p><p class='pri' style="display: inline-block;color: grey;text-decoration:line-through">12.50万</p>
+                        </div></a>
+                        </li>
+                        <li id='li13324322'><a  href='xiangqing.html'  >
+                            <div class='car-img'>
+                                <img src='http://img8.taoche.cn/1d/021701i4tf.jpg' class='' data-original='http://img8.taoche.cn/1d/021701i4tf.jpg' onerror="javascript:this.src='http://img5.taoche.cn/1d/021500nc86.png';" >
+                            </div><div class='car-txt'><p class='name'>比亚迪S6 2013款 2.0L 手动 精英型 白金版</p>
+                            <p class='time'>2013年</p>
+                            <p class='pri' style="display: inline-block;">搜融：<p class='pri'  style="display: inline-block;">11.50万</p></p>
+                            <p class='pri' style="display: inline-block;color: grey">市价：<p class='pri' style="display: inline-block;color: grey;text-decoration:line-through">12.50万</p></p>
+                        </div>
+                        </a></li>
+                        <li id='li13280652'><a  href='xiangqing.html' >
+                            <div class='car-img'>
+                                <img src='http://img6.taoche.cn/1d/0217016zyx.jpg' class='' data-original='http://img6.taoche.cn/1d/0217016zyx.jpg' onerror="javascript:this.src='http://img5.taoche.cn/1d/021500nc86.png';" >
+                            </div><div class='car-txt'><p class='name'>新桑塔纳 2015款 1.6L 自动 豪华版</p>
+                            <p class='time'>2015年</p>
+                            <p class='pri' style="display: inline-block;">搜融：<p class='pri'  style="display: inline-block;">11.50万</p></p>
+                            <p class='pri' style="display: inline-block;color: grey">市价：<p class='pri' style="display: inline-block;color: grey;text-decoration:line-through">12.50万</p></p>
+                        </div></a>
+                        </li>
+                        <li id='li13293878'><a  href='xiangqing.html'  >
+                            <div class='car-img'>
+                                <img src='http://img8.taoche.cn/1d/021701abh1.jpg' class='' data-original='http://img8.taoche.cn/1d/021701abh1.jpg' onerror="javascript:this.src='http://img5.taoche.cn/1d/021500nc86.png';" >
+                            </div><div class='car-txt'><p class='name'>君威 2002款 GS3.0旗舰版</p>
+                            <p class='time'>2002年</p>
+                            <p class='pri' style="display: inline-block;">搜融：<p class='pri'  style="display: inline-block;">11.50万</p></p>
+                            <p class='pri' style="display: inline-block;color: grey">市价：<p class='pri' style="display: inline-block;color: grey;text-decoration:line-through">12.50万</p></p>
+                        </div>
+                        </a>
+                        </li>
+                        <li id='li13297736'>
+                            <a  href='xiangqing.html'  >
+                                <div class='car-img'>
+                                    <img src='http://img6.taoche.cn/1d/021701b8nb.jpg' class='' data-original='http://img6.taoche.cn/1d/021701b8nb.jpg' onerror="javascript:this.src='http://img5.taoche.cn/1d/021500nc86.png';" >
+                                </div><div class='car-txt'><p class='name'>科鲁兹三厢 2012款 1.6L SL AT 天地版</p>
+                                <p class='time'>2012年</p>
+                                <p class='pri' style="display: inline-block;">搜融：<p class='pri'  style="display: inline-block;">11.50万</p></p>
+                                <p class='pri' style="display: inline-block;color: grey">市价：<p class='pri' style="display: inline-block;color: grey;text-decoration:line-through">12.50万</p></p>
+                            </div>
+                            </a>
+                        </li>
+                        <li id='li13297312'>
+                            <a  href='xiangqing.html' >
+                                <div class='car-img'>
+                                    <img src='http://img6.taoche.cn/1d/021701b4zv.jpg' class='' data-original='http://img6.taoche.cn/1d/021701b4zv.jpg' onerror="javascript:this.src='http://img5.taoche.cn/1d/021500nc86.png';" >
+                                </div><div class='car-txt'><p class='name'>卡罗拉 2016款 1.6L  CVT GL-i炫酷版</p>
+                                <p class='time'>2015年</p>
+                                <p class='pri' style="display: inline-block;">搜融：<p class='pri'  style="display: inline-block;">11.50万</p></p>
+                                <p class='pri' style="display: inline-block;color: grey">市价：<p class='pri' style="display: inline-block;color: grey;text-decoration:line-through">12.50万</p></p>
+                            </div>
+                            </a>
+                        </li>
+                        <li id='li13283171'>
+                            <a  href='xiangqing.html' >
+                                <div class='car-img'>
+                                    <img src='http://img5.taoche.cn/1d/0217017md5.jpg' class='' data-original='http://img5.taoche.cn/1d/0217017md5.jpg' onerror="javascript:this.src='http://img5.taoche.cn/1d/021500nc86.png';" >
+                                </div>
+                                <div class='car-txt'>
+                                    <p class='name'>蓝鸟 2004款 智尊 尊贵舒适型</p>
+                                    <p class='time'>2005年</p>
+                                    <p class='pri' style="display: inline-block;">搜融：<p class='pri'  style="display: inline-block;">11.50万</p></p>
+                                    <p class='pri' style="display: inline-block;color: grey">市价：<p class='pri' style="display: inline-block;color: grey;text-decoration:line-through">12.50万</p></p>
+                                </div>
+                            </a>
+                        </li>
+                        <li id='li13257983'>
+                            <a  href='xiangqing.html'  >
+                                <div class='car-img'>
+                                    <img src='http://img5.taoche.cn/1d/0217011dy9.jpg' class='' data-original='http://img5.taoche.cn/1d/0217011dy9.jpg' onerror="javascript:this.src='http://img5.taoche.cn/1d/021500nc86.png';" >
+                                </div>
+                                <div class='car-txt'>
+                                    <p class='name'>朗逸 2008款 1.6L手动品轩版</p>
+                                    <p class='time'>2009年</p>
+                                    <p class='pri' style="display: inline-block;">搜融：<p class='pri'  style="display: inline-block;">11.50万</p></p>
+                                    <p class='pri' style="display: inline-block;color: grey">市价：<p class='pri' style="display: inline-block;color: grey;text-decoration:line-through">12.50万</p></p>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!--周边车源时特殊处理-->
+
+            </div>
+            <div>
+                <div style="padding: 2vw;margin: 1vw;text-align: center">
+                    <div class="bottom-content">
+                        <a href="companyIntro.html">关于搜融</a>
+                    </div>
+                    <div class="bottom-content" style="margin: 0 4vw">
+                        <a href="productIntro.html" >产品介绍</a>
+                    </div>
+                    <div class="bottom-content">
+                        <a href="chehang.html">合作车行</a>
+                    </div>
+                </div>
+                <div class="new-footer-text" style="margin-bottom: 5%">
+                    <p style="font-size: 4vw;">咨询热线：<strong style="font-size: 4vw;">0755-8522 9067</strong> ( 9:00 – 21:00 )</p>
+                    <p><img src="images/ewm.jpeg" style="width: 50%"></p>
+                    <h5 style="color: orangered;font-size: 4vw;">更多详情，请关注“搜融到家”公众号</h5>
+                </div>
+            </div>
+            <div style="background-color:#d0d0d0;height:1vw"></div>
+            <div style="background-color:#A0A0A0;height:1vw"></div>
+            <div style="background-color:#717171;height:1vw"></div>
+            <div style="background-color:#2f2f2f;height:1vw"></div>
+            <div  style="background-color: #0b0b0b;padding: 1vw">
+                <p style="text-align: center;font-size: 4vw;color:#ff3709;">© 2017 搜融好车 sourong luxury cars.com</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- 右侧边栏 -->
+<nav id="userinfo" style="background-color: white;">
+    <div><img src="images/car-userinfo-right.png" style="width:100%;margin-top: 30%"></div>
+    <div style="margin-top: 15%; margin-left: 0%;">
+        <ul>
+            <li style="margin-left: 10%;">
+                <img src="images/home.png" style="width: 13%;height: 13%;margin-left: -30px;margin-bottom: 10px">
+                <div style="display: inline-block;margin-left: 2%">
+                    <a href="index.html">首页</a>
+                </div>
+            </li>
+            <li style="margin-left: 10%;">
+                <img src="images/black-collect.png" style="width: 13%;height: 13%;margin-left: -30px;margin-bottom: 10px">
+                <div style="display: inline-block;margin-left: 2%">
+                    <a href="list.html"><div style="display: inline-block;margin-left: 2%;width:100%">我的收藏</div></a>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <ul style="position: absolute;left: 0;right: 0;bottom: 2vh;margin-left: 0%">
+        <li style="margin-left: 10%;">
+            <img src="images/logout.png" style="width: 13%;height: 13%;margin-left: -30px;margin-bottom: 10px">
+            <div style="display: inline-block;margin-left: 2%">
+                <a href="#" id="logoff"><div style="display: inline-block;margin-left: 2%;width:100%">退出</div></a>
+            </div>
+        </li>
+    </ul>
+</nav>
+<!-- 左侧边栏 -->
+<nav id="menu" style="background-color: white;">
+    <div>
+        <img src="images/car-menu-left.png" style="width:100%;margin-top: 30%">
+    </div>
+    <div style="margin-top: 20%">
+        <ul >
+            <li style="margin-left: 10%">
+                <img src="images/home.png" style="width: 13%;height: 13%;margin-left: 30px;margin-bottom: 10px">
+                <div style="display: inline-block;margin-left: 2%">
+                    <a href="index.html">首页</a>
+                </div>
+            </li>
+            <li >
+                <img src="images/black-collect.png" style="width: 13%;height: 13%;margin-left: 30px;margin-bottom: 10px">
+                <div style="display: inline-block;margin-left: 2%">
+                    <a href="list.html"><div style="display: inline-block;margin-left: 2%;width:100%">我的收藏</div></a>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <ul style="position: absolute;left: 0;right: 0;bottom: 2vh;">
+        <li >
+            <img src="images/logout.png" style="width: 13%;height: 13%;margin-left: 10%;margin-bottom: 10px">
+            <div style="display: inline-block;margin-left: 2%">
+                <a href=""><div style="display: inline-block;margin-left: 2%;width:100%">退出</div></a>
+            </div>
+        </li>
+    </ul>
+</nav>
+<div id="shape">
+    <div class="shapeColor">
+        <div class="shapeFly">
+        </div>
+    </div>
+</div>
+</body>
+<script type='text/javascript' src='js/base/jquery.min.js'></script>
+<script type='text/javascript' src='js/base/jquery.mobile.customized.min.js'></script>
+<script type='text/javascript' src='js/base/jquery.easing.1.3.js'></script>
+<script type='text/javascript' src='js/base/camera.min.js'></script>
+<script type='text/javascript' src='js/base/banner.js'></script>
+<script type='text/javascript' src='bootstrap/js/bootstrap.min.js'></script>
+<script type='text/javascript' src='js/base/slideout.min.js'></script>
+<script type='text/javascript' src='js/base/sidebar.js'></script>
+<script type='text/javascript' src='js/base/loadmore.js'></script>
+<script type='text/javascript' src='js/base/layer/layer.js'></script>
+<script type='text/javascript' src='js/base/rocketTop.js'></script>
+<script type="text/javascript" src="js/base/common.js"></script>
+<script type="text/javascript" src="js/list.js"></script>
+</html>

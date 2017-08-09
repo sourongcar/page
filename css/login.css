@@ -1,0 +1,23 @@
+.hint{
+    text-align: center;
+    color: orangered;
+    border: 1px orangered solid
+}
+.hint .layui-layer-content{
+    padding:5vw 0vw;
+}
+#btn_login{
+    width: 30vw;color: white;background-color: orangered;font-size: 4vw
+}
+#register{
+    width: 30vw;color:orangered;border: 1px orangered solid;font-size: 4vw
+}
+#btn_register{
+    width: 30vw;color:orangered;border: 1px orangered solid;font-size: 4vw
+}
+.form-group input{
+    border: 1px solid orangered;
+    width: 40vw;
+    font-size: 4vw;
+    display: inline-block;
+}

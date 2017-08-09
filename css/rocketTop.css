@@ -1,0 +1,40 @@
+#shape{
+
+	background: url("../images/car_top.png") no-repeat scroll 0 0  transparent;
+	display: block;
+	height: 36vw;
+	width: 20vw;
+	overflow: hidden;
+	border-color: red;
+	position: fixed;
+	margin:-125px 0 0;
+	right: 1%;
+	top:90%;
+	z-index: 12;
+	opacity:0.6;
+	transition: margin 1s cubic-bezier(0.27, -0.21, 0.79, -0.1);
+	background-size: 10vw 18vw;
+}
+#shape.on{
+	margin-top: -1000px;
+}
+#shape .shapeColor{
+	display:none; 
+    height:36vw;
+    width: 20vw;
+    z-index:11;
+    overflow: hidden;
+    position: absolute;
+	background-size: 10vw 18vw;
+}
+
+#shape .shapeColor .shapeFly{
+	background: url("../images/car_top_jet.png") no-repeat;
+	display:none; 
+    height:36vw;
+    width: 20vw;
+    z-index:10;
+    overflow: hidden;
+    position: absolute;
+	background-size: 10vw 20vw;
+}

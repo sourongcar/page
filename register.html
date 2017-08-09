@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+<button id="test">注册</button>
+<div id="register_layer">
+    <form id="myform" method="post" class="form-inline" style="font-family: 宋体">
+        <div class="form-group"  style="font-size: 4vw;">
+            <label for="phone">请输入手机号</label>
+            <input type="text"  class="form-control" id="phone" value="" name="phone" style="">
+        </div><br><div class="form-group"  style="font-size: 4vw;">
+            <label for="phone">请输入姓名</label>
+            <input type="text"  class="form-control" id="username"value="" name="phone" style="margin-left: 4vw;">
+        </div><br>
+        <div class="form-group" style="font-size: 4vw;">
+            <label for="passwd" >请输入密码</label>
+            <input type="password" class="form-control" id="passwd" value="" name="passwd" style="margin-left: 4vw;">
+        </div>
+        <div style="margin-top: 3vw;display: inline-block;">
+            <button id="btn_register" class="btn btn-default"type="button">注册</button>
+        </div>
+    </form>
+</div>
+<script type="text/javascript" src="js/base/jquery.min.js"></script>
+<script type="text/javascript" src="js/base/common.js"></script>
+<script type="text/javascript" src="js/base/layer/layer.js"></script>
+<script type="text/javascript" src="js/base/jquery.md5.js"></script>
+
+<script type="text/javascript">
+    $(function(){
+        $("#test").on("click",function(){
+            layer.open({
+                type: 1,
+                content: $("#register_layer"),
+                scrollbar: false,
+                skin: 'hint',
+                btn: [],
+                title: false,
+                shadeClose: true,
+                closeBtn: false,
+                anim: 2,
+                area:'90%',
+            });
+        });
+        $("#btn_register").on("click",function(){
+            console.info("$register");
+            doRegister();
+        })
+
+    })
+
+
+</script>
+</body>
+</html>

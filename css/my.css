@@ -1,0 +1,153 @@
+.fluid_container {
+    margin: 0 auto 0;
+
+}
+.mobile{
+    font-size: 1em;
+    color: white;
+}
+.mobile_price{
+    font-size: 1em;
+    color: white;
+}
+/* Slide transitions */
+
+.slideUp {
+    /* -webkit-transform: translateY(-100px);
+     transform: translateY(-100px);*/
+    -webkit-transform: translateY(-100px);
+    -ms-transform: translateY(-100px);
+    -o-transform: translateY(-100px);
+    transform: translateY(-100px);
+    /*transition: transform .5s ease-out;*/
+    -webkit-transition: transform .5s ease-out;
+    -o-transition: transform .5s ease-out;
+    transition: transform .5s ease-out;
+}
+
+.slideDown {
+    /*-webkit-transform: translateY(0);
+    transform: translateY(0);*/
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0);
+    /*transition: transform .5s ease-out;*/
+    -webkit-transition: transform .2s ease-out;
+    -o-transition: transform .2s ease-out;
+    transition: transform .2s ease-out;
+}
+
+.header-navigation {
+    width: 100%;
+    height: auto;
+    background: black;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    z-index: 9;
+    padding: 1% 1%;
+    overflow: hidden;
+}
+.div_input{
+    border: 1px white solid;
+    border-radius: 10px;
+}
+.div_input form input,.div_input form button{background-color: transparent;  }
+.div_input form input{
+    outline: none;
+    border: none;
+    font-size: 4vw;
+    padding: 3%;
+    color: white;
+}
+.div_input form button{
+    outline: none;
+    border: none;
+    float: right;
+    padding-top: 2%;
+    padding-bottom: 1%;
+    padding-right: 3%;
+}
+.slideout-menu {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 66.6%;
+    min-height: 100vh;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    z-index: 0;
+    display: none;
+}
+
+.slideout-menu-left {
+    left: 0;
+}
+
+.slideout-menu-right {
+    right: 0;
+}
+
+.slideout-panel {
+    position: relative;
+    z-index: 1;
+    will-change: transform;
+    background-color: #FFF; /* A background-color is required */
+    min-height: 30vh;
+}
+
+.slideout-open,
+.slideout-open body,
+.slideout-open .slideout-panel {
+    overflow: hidden;
+}
+
+.slideout-open .slideout-menu {
+    display: block;
+}
+
+ul li{
+    list-style: none;
+    font-size: calc(100% + 1vw);
+    margin: 5% 0 0;
+    padding: 2%;
+}
+.car-sign{
+    float: left;
+    width: 20%;
+    text-align: center;
+    margin-bottom: 5%;
+}
+.car-sign-img{
+    width: 80%;
+    height: 80%
+}
+
+.bottom-content{
+    background: url(../images/bottomcontent.png) no-repeat;
+    background-size:100%;
+    padding: 5vw;
+    display: inline-block;
+}
+.bottom-content a{
+    color: white;
+    position: relative;
+    top:4vw;
+}
+.get-more{
+    position: relative;
+    margin: 0 auto 10px;
+    height: 44px;
+    line-height: 44px;
+    background: #f4f4f4;
+    text-align: center;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+}
+a{
+    color: black;
+}
+.popular-car{
+    margin:5vw 5vw;
+}

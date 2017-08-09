@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <title>汽车详情</title>
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="stylesheet" href="css/hwLayer.css">
+    <link rel="stylesheet" type="text/css" href="css/Details_Style.css">
+    <link rel="stylesheet" href="css/rocketTop.css">
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<style type="text/css">
+    .header-navigation {
+        width: 100%;
+        height: auto;
+        background: black;
+        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+        z-index: 9999999;
+        padding: 1% 1%;
+        overflow: hidden;
+    }
+    .div_input{
+        border: 1px white solid;
+        border-radius: 10px;
+    }
+    .div_input form input,.div_input form button{background-color: transparent;  }
+    .div_input form input{
+        outline: none;
+        border: none;
+        font-size: 4vw;
+        padding: 3%;
+    }
+    .div_input form button{
+        outline: none;
+        border: none;
+        float: right;
+        padding-top: 2%;
+        padding-bottom: 1%;
+        padding-right: 3%;
+    }
+   /* #shape.on{
+        margin-top: -1000px;
+    }
+    #shape{
+        transition: all 2s ease-in;
+    }*/
+</style>
+<style type="text/css">
+    .slideout-menu {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        width: 66.6%;
+        min-height: 100vh;
+        overflow-y: scroll;
+        -webkit-overflow-scrolling: touch;
+        z-index: 0;
+        display: none;
+    }
+
+    .slideout-menu-left {
+        left: 0;
+    }
+
+    .slideout-menu-right {
+        right: 0;
+    }
+
+    .slideout-panel {
+        position: relative;
+        z-index: 1;
+        will-change: transform;
+        background-color: #FFF; /* A background-color is required */
+        min-height: 30vh;
+    }
+
+    .slideout-open,
+    .slideout-open body,
+    .slideout-open .slideout-panel {
+        overflow: hidden;
+    }
+
+    .slideout-open .slideout-menu {
+        display: block;
+    }
+
+    ul li{
+        list-style: none;
+        font-size: calc(100% + 1vw);
+        margin: 5% 0 0;
+        padding: 2%;
+    }
+    *{padding: 0;margin: 0}
+
+    .chebiao{
+        display: inline-block;
+        margin-left: 5%;
+    }
+    .bottom-content{
+        background: url('images/bottomcontent.png') no-repeat;
+        background-size:100%;
+        padding: 5vw;
+        display: inline-block;
+    }
+    .bottom-content a{
+        color: white;
+        position: relative;
+        top:4vw;
+        font-size: 4vw;
+    }
+
+
+
+</style>
+<body>
+
+<div id="content-wrap" >
+    <div id = "logo" style="text-align: center;width: auto;background: black;padding: 3%;z-index: 99999" >
+         <div style="padding: 2.5% 15%;position: relative">
+                <img src="images/nocarlogo.png"  style="width: 100%;height:auto;">
+                <img src="images/car.png" id="logoAction" style="width:10%;height:auto;top:45%;right:40%;position:absolute">
+            </div>
+    </div>
+    <div style="background-color: black;padding: 3% 0%;color: white;overflow: hidden;text-align: center">
+        <div style="float:left;text-align: center;margin: 2% 0;width: 13%">
+            <a class="new-btn-return" href="javascript:window.history.go(-1)"> <span class="glyphicon glyphicon-chevron-left" style="font-size: 6vw;color: rgb(205, 205,205)"></span></a>
+        </div>
+        <div style="width: 70%;float: left">
+            <div class="div_input">
+                <form>
+                    <input type="text" placeholder="搜索从这里开始..." style="width: 80%">
+                    <button type="submit" ><img src="images/steering_wheel.png" style="width: 5vw;height: 5vw;"></button>
+                </form>
+            </div>
+        </div>
+        <div style="float: right;text-align: center;margin: 2% 0;width: 13%" class="toggle-button-userinfo">
+            <img src="images/meun.png" style="width:45%;height: 78%">
+        </div>
+    </div>
+    <!-- 自己页面代码部分添加在此 -->
+    <div style="background-color:#292929;height:3px"></div>
+    <div style="background-color:#717171;height:3px"></div>
+    <div style="background-color:#A0A0A0;height:3px"></div>
+    <div style="background-color:#d0d0d0;height:3px"></div>
+    <div style="width:35%;margin-left: 32.5%">
+        <img src="images/cars_sign/BMW.png" width="100%">
+    </div>
+
+        <div >
+
+            <ul>
+                <li style="margin-top: 0;border-bottom:1.2px solid orangered;">
+                    <div style="display: inline-block;border-left:2px solid orangered;">&nbsp</div>
+                    <p class='pri' style="display: inline-block;color: orangered">全部：</p>
+                    <a href='xiangqing.html'><p class='pri chebiao'  >1系</p></a>
+                    <a href='xiangqing.html'><p class='pri chebiao' >2系</p></a>
+                    <a href='xiangqing.html'><p class='pri chebiao'>3系</p></a>
+                    <a href='xiangqing.html'><p class='pri chebiao'  >5系</p></a>
+                    <a href='xiangqing.html'><p class='pri chebiao' >7系</p></a>
+                </li>
+                <li style="margin-top: 0;border-bottom:1.2px solid orangered;">
+                    <p class='pri' style="display: inline-block;width: 12%">&nbsp&nbsp</p>
+                    <a href='xiangqing.html'><p class='pri chebiao' > X1</p></a>
+                    <a href='xiangqing.html'><p class='pri chebiao' > X2</p></a>
+                    <a href='xiangqing.html'><p class='pri chebiao'> X5</p></a>
+                    <a href='xiangqing.html'><p class='pri chebiao' >Z4</p></a>
+                    <a href='xiangqing.html'><p class='pri chebiao' >X5插电混动</p></a>
+                </li>
+                <li  style="margin-top: 0;border-bottom:1.2px solid orangered;">
+                    <p class='pri' style="display: inline-block;width: 12%">&nbsp&nbsp</p>
+                    <a href='xiangqing.html'><p class='pri chebiao' >7系插电混动</p></a>
+                    <a href='xiangqing.html'><p class='pri chebiao' >i3</p></a>
+                    <a href='xiangqing.html'><p class='pri chebiao' >i8</p></a>
+                    <a href='xiangqing.html'><p class='pri chebiao' >X5</p></a>
+                    </a>
+                </li>
+             </ul>
+      </div>
+    <!--每一款车型-->
+    <div style="margin:5vw 5vw;height: 50vw;overflow:hidden;zoom:1;">
+        <img src="images/sliders/slider1.jpg" onclick="window.location.href='xiangqing.html'" style="width: 100%;height: 50vw">
+        <div style="height: 15vw;position:relative; z-index:1;top:-15vw ;background-color: rgba(0,0,0,0.5);color: white;text-align: center">
+            <div class="col-xs-6" style="margin-top: 2vw">
+                <span style="font-size: 8vw;">奔驰GLC</span>
+            </div>
+            <div class="col-xs-6" style="font-size: 4vw;">
+                <div style="margin-top: 2vw">
+                    <span>市价：</span>
+                    <span>¥150万</span>
+                </div>
+                <div style="color: orangered">
+                    <span>搜融：</span>
+                    <span>¥140万</span>
+                </div>
+            </div>
+        </div>
+    </div><div style="margin:5vw 5vw;height: 50vw;overflow:hidden;zoom:1;">
+    <img src="images/sliders/slider2.jpg" onclick="window.location.href='xiangqing.html'" style="width: 100%;height: 50vw">
+    <div style="height: 15vw;;position:relative; z-index:1;top:-15vw ;background-color: rgba(0,0,0,0.5);color: white;text-align: center">
+        <div class="col-xs-6" style="margin-top: 2vw">
+            <span style="font-size: 8vw;">奔驰GLC</span>
+        </div>
+        <div class="col-xs-6" style="font-size: 4vw;">
+            <div style="margin-top: 2vw">
+                <span>市价：</span>
+                <span>¥150万</span>
+            </div>
+            <div style="color: orangered">
+                <span>搜融：</span>
+                <span>¥140万</span>
+            </div>
+        </div>
+    </div>
+</div><div style="margin:5vw 5vw;height: 50vw;overflow:hidden;zoom:1;">
+    <img src="images/sliders/slider3.jpg" onclick="window.location.href='xiangqing.html'" style="width: 100%;height: 50vw">
+    <div style="height: 15vw;;position:relative; z-index:1;top:-15vw ;background-color: rgba(0,0,0,0.5);color: white;text-align: center">
+        <div class="col-xs-6" style="margin-top: 2vw">
+            <span style="font-size: 8vw;margin-top: 2vw">奔驰GLC</span>
+        </div>
+        <div class="col-xs-6" style="font-size: 4vw;">
+            <div style="margin-top: 2vw">
+                <span>市价：</span>
+                <span>¥150万</span>
+            </div>
+            <div style="color: orangered">
+                <span>搜融：</span>
+                <span>¥140万</span>
+            </div>
+        </div>
+    </div>
+</div><div style="margin:5vw 5vw;height: 50vw;overflow:hidden;zoom:1;">
+    <img src="images/sliders/slider4.jpg" onclick="window.location.href='xiangqing.html'" style="width: 100%;height: 50vw">
+    <div style="height: 15vw;;position:relative; z-index:1;top:-15vw ;background-color: rgba(0,0,0,0.5);color: white;text-align: center">
+        <div class="col-xs-6" style="margin-top: 2vw">
+            <span style="font-size: 8vw;">奔驰GLC</span>
+        </div>
+        <div class="col-xs-6" style="font-size: 4vw;">
+            <div style="margin-top: 2vw">
+                <span>市价：</span>
+                <span>¥150万</span>
+            </div>
+            <div style="color: orangered">
+                <span>搜融：</span>
+                <span>¥140万</span>
+            </div>
+        </div>
+    </div>
+</div><div style="margin:5vw 5vw;height: 50vw;overflow:hidden;zoom:1;">
+    <img src="images/sliders/slider4.jpg" onclick="window.location.href='xiangqing.html'" style="width: 100%;height: 50vw">
+    <div style="height: 15vw;;position:relative; z-index:1;top:-15vw ;background-color: rgba(0,0,0,0.5);color: white;text-align: center">
+        <div class="col-xs-6" style="margin-top: 2vw">
+            <span style="font-size: 8vw;">奔驰GLC</span>
+        </div>
+        <div class="col-xs-6" style="font-size: 4vw;">
+            <div style="margin-top: 2vw">
+                <span>市价：</span>
+                <span>¥150万</span>
+            </div>
+            <div style="color: orangered">
+                <span>搜融：</span>
+                <span>¥140万</span>
+            </div>
+        </div>
+    </div>
+</div><div style="margin:5vw 5vw;height: 50vw;overflow:hidden;zoom:1;">
+    <img src="images/sliders/slider4.jpg" onclick="window.location.href='xiangqing.html'" style="width: 100%;height: 50vw">
+    <div style="height: 15vw;;position:relative; z-index:1;top:-15vw ;background-color: rgba(0,0,0,0.5);color: white;text-align: center">
+        <div class="col-xs-6" style="margin-top: 2vw">
+            <span style="font-size: 8vw;">奔驰GLC</span>
+        </div>
+        <div class="col-xs-6" style="font-size: 4vw;">
+            <div style="margin-top: 2vw">
+                <span>市价：</span>
+                <span>¥150万</span>
+            </div>
+            <div style="color: orangered">
+                <span>搜融：</span>
+                <span>¥140万</span>
+            </div>
+        </div>
+    </div>
+</div>
+    <link rel="stylesheet" type="text/css" href="css/new_headfoot.css" media="all" />
+    <div class="new-footer" style="padding-top: 30px;">
+        <div style="padding: 2vw;margin: 1vw;text-align: center">
+            <div class="bottom-content">
+                <a href="companyIntro.html">关于搜融</a>
+            </div>
+            <div class="bottom-content" style="margin: 0 4vw">
+                <a href="productIntro.html" >产品介绍</a>
+            </div>
+            <div class="bottom-content">
+                <a href="chehang.html">合作车行</a>
+            </div>
+        </div>
+        <div class="new-footer-text">
+            <p  style="font-size: 13px;">咨询热线：<strong style=" font-size: 15px;">0755-8522 9067</strong> ( 9:00 – 21:00 )</p>
+            <p><img src="images/ewm.jpeg" style="width: 50%"></p>
+            <h5 style="color: orangered">更多详情，请关注“搜融到家”公众号</h5>
+        </div>
+    </div>
+    <!-- 尾部star -->
+    <div style="background-color:#d0d0d0;height:3px"></div>
+    <div style="background-color:#A0A0A0;height:3px"></div>
+    <div style="background-color:#717171;height:3px"></div>
+    <div style="background-color:#2f2f2f;height:3px"></div>
+    <div class="hslie" style="background-color: #0b0b0b;height:35px">
+        <p style="text-align: center;font-size:12px;color:#ff3709;padding-top: 7px">© 2017 搜融好车 sourong luxury cars.com</p>
+    </div>
+    <!-- -->
+</div>
+<nav id="menu" style="background-color: white;">
+    <div>
+        <img src="images/car-menu-left.png" style="width:100%;margin-top: 30%">
+    </div>
+    <div style="margin-top: 20%">
+        <ul>
+            <li>
+                <img src="images/home.png" style="width: 13%;height: 13%;margin-bottom: 10px">
+                <a href="index.html"><div style="display: inline-block;margin-left: 2%;font-size: 4vw;">首页</div></a>
+            </li>
+            <li>
+                <img src="images/black-collect.png" style="width: 13%;height: 13%;margin-bottom: 10px">
+                <a href="list.html"><div style="display: inline-block;margin-left: 2%;font-size: 4vw;" >我的收藏</div></a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<nav id="userinfo" style="background-color: white;">
+    <div><img src="images/car-userinfo-right.png" style="width:100%;margin-top: 30%"></div>
+    <div style="margin-top: 15%; margin-left: 17%;">
+        <ul>
+            <li>
+                <img src="images/home.png" style="width: 13%;height: 13%;margin-left: -30px;margin-bottom: 10px">
+                <div style="display: inline-block;margin-left: 2%">
+                    <a href="index.html">首页</a>
+                </div>
+            </li>
+            <li>
+                <img src="images/black-collect.png" style="width: 13%;height: 13%;margin-left: -30px;margin-bottom: 10px">
+                <div style="display: inline-block;margin-left: 2%">
+                    <a href="list.html"><div style="display: inline-block;margin-left: 2%;width:100%">我的收藏</div></a>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <ul style="position: absolute;left: 0;right: 0;bottom: 2vh;margin-left: 17%">
+        <li>
+            <img src="images/logout.png" style="width: 13%;height: 13%;margin-left: -30px;margin-bottom: 10px">
+            <div style="display: inline-block;margin-left: 2%">
+                <a href="#" id="logoff"><div style="display: inline-block;margin-left: 2%;width:100%">退出</div></a>
+            </div>
+        </li>
+    </ul>
+</nav>
+<div id="shape">
+    <div class="shapeColor">
+        <div class="shapeFly">
+        </div>
+    </div>
+</div>
+
+<div id="login" hidden>
+    <form id="myform" method="post" class="form-inline" style="font-family: 宋体">
+        <div class="form-group"  style="font-size: 4vw;">
+            <label for="phone">请输入手机号</label>
+            <input type="text"  class="form-control" id="phone" value="" name="phone" style="">
+        </div><br>
+        <div class="form-group" style="font-size: 4vw;">
+            <label for="passwd" >请输入密码</label>
+            <input type="password" class="form-control" id="passwd" value="" name="passwd" style="margin-left: 4vw;">
+        </div>
+        <div style="margin-top: 3vw;display: inline-block;">
+            <button id="btn_login" class="btn btn-default" type="button">登录</button>
+        </div>
+        <div style="margin-top: 3vw;display: inline-block;">
+            <button id="register" class="btn btn-default"type="button">注册</button>
+        </div>
+    </form>
+</div>
+
+<div id="register_layer" hidden>
+    <form id="myform2" method="post" class="form-inline" style="font-family: 宋体">
+        <div class="form-group"  style="font-size: 4vw;">
+            <label for="phone">请输入手机号</label>
+            <input type="text"  class="form-control" id="register_phone" value="" name="phone" style="">
+        </div><br><div class="form-group"  style="font-size: 4vw;">
+        <label for="phone">请输入姓名</label>
+        <input type="text"  class="form-control" id="register_username" value="" name="phone" style="margin-left: 4vw;">
+    </div><br>
+        <div class="form-group" style="font-size: 4vw;">
+            <label for="passwd" >请输入密码</label>
+            <input type="password" class="form-control" id="register_passwd" value="" name="passwd" style="margin-left: 4vw;">
+        </div>
+        <div style="margin-top: 3vw;display: inline-block;">
+            <button id="btn_register" class="btn btn-default"type="button">注册</button>
+        </div>
+    </form>
+</div>
+
+
+</body>
+<script src="js/base/jquery.min.js"></script>
+<script src="js/base/slideout.min.js"></script>
+<script src="js/base/sidebar.js"></script>
+<!-- Include the polyfill -->
+<script src="js/base/web-animations.min.js"></script>
+<!-- Include Animatelo -->
+<script src="js/base/animatelo.min.js"></script>
+<script src="js/base/jquery.hwLayer.js"></script>
+<script src="js/base/rocketTop.js"></script>
+<script src="js/base/common.js"></script>
+<script type="text/javascript" src="js/base/jquery.md5.js"></script>
+<script type="text/javascript" src="js/base/layer/layer.js"></script>
+<script type="text/javascript" src="js/searchcarlist.js"></script>
+</html>
