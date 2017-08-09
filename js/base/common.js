@@ -127,7 +127,7 @@ $("#register").on("click",function(){
 function  login(success){
     var phone = $("#phone").val();
     var passwd = $("#passwd").val();
-    if(checkPhone(phone)){
+    if(!checkPhone(phone)){
         return
     }
    /* if(phone == null || phone == ""){
@@ -191,10 +191,10 @@ function doRegister(success){
         alert("请输入正确的手机号！")
         return
     }*/
-    if(checkPhone(userphone)){
+    if(!checkPhone(userphone)){
         return
     }
-    if(checkUserName(username)){
+    if(!checkUserName(username)){
         return
     }
     if(password == null || password == ""){
@@ -238,17 +238,17 @@ function doRegister(success){
 }
 function checkPhone(phone){
     if((/^1(3|4|5|7|8)\d{9}$/.test(phone))){
-        alert("手机号码有误，请重填");
         return true;
     }else{
+        alert("手机号码有误，请重填");
         return false ;
     }
 }
 function checkUserName(username){
     if((/^([\u4e00-\u9fa5 ]{2,20}|[a-zA-Z\/ ]{2,20})$/.test(username))){
-        alert("姓名输入有误");
         return true;
     }else{
+        alert("姓名输入有误");
         return false ;
     }
 }
