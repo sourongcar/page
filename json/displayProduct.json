@@ -1,0 +1,32 @@
+{
+  "end":false,
+  "list":[
+  {
+    "productid":1,
+    "marketprice":21,
+    "sourongprice":11,
+    "coverpic":"sliders/slider1.jpg",
+    "title":"GLC1"
+  },
+  {
+    "productid":2,
+    "marketprice":22,
+    "sourongprice":12,
+    "coverpic":"sliders/slider2.jpg",
+    "title":"SUV2"
+  },
+  {
+    "productid":3,
+    "marketprice":23,
+    "sourongprice":13,
+    "coverpic":"sliders/slider3.jpg",
+    "title":"Q73"
+  },
+  {
+    "productid":4,
+    "marketprice":24,
+    "sourongprice":14,
+    "coverpic":"sliders/slider4.jpg",
+    "title":"TT8"
+  }
+]}

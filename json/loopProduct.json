@@ -1,0 +1,30 @@
+[
+  {
+    "productid":1,
+    "marketprice":21,
+    "sourongprice":11,
+    "coverpic":"sliders/slider1.jpg",
+    "picintroduction":"1111111111111111221111"
+  },
+  {
+    "productid":2,
+    "marketprice":22,
+    "sourongprice":12,
+    "coverpic":"sliders/slider2.jpg",
+    "picintroduction":"22222222222222222111"
+  },
+  {
+    "productid":3,
+    "marketprice":23,
+    "sourongprice":13,
+    "coverpic":"sliders/slider3.jpg",
+    "picintroduction":"33333333333333221111"
+  },
+  {
+    "productid":4,
+    "marketprice":24,
+    "sourongprice":14,
+    "coverpic":"sliders/slider4.jpg",
+    "picintroduction":"444444444444441221111"
+  }
+]
