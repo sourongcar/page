@@ -128,3 +128,23 @@ with (document) 0[(getElementsByTagName('head')[0] || body)
     .appendChild(createElement('script'))
     .src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='
     + ~(-new Date() / 36e5)];
+
+$(function(){
+    /**
+     * 实现公司信息调用
+     */
+    $.ajax({
+        url:'http://localhost:8080/sourong_car/company/getCompanyinformation.action',
+        type:'POST',
+        dataType: "json",
+        success:function(data){
+            $("#CompanyAddressArea").text(data.companyaddress);
+            $("#CompanyPhoneArea").text(data.companyphone);
+            $("#ServiceTimeArea").text(data.servicetime);
+            $("#CompanyQRArea").attr("src",'http://localhost:8080/images/'+data.companyqr);
+        },
+        error: function () {
+
+        }
+    })
+});
