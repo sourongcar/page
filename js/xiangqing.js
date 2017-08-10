@@ -10,6 +10,11 @@ $(window).load(function(){
     window.animatelo.bounceInLeft('#logoAction');
 });
 $(function(){
+    /**
+     * 产品id
+     * @type {number}
+     */
+    var productid=+location.search.split('=')[1];
     $("#collection").on("click",function(){
         var src = $("#collection").attr('src');
         if(src=="images/collection.png"){
