@@ -17,17 +17,17 @@ function getIndexUrl(){
 }
 
 /*
-* 获取请求的地址
-*
-* */
+ * 获取请求的地址
+ *
+ * */
 function getUrl(){
     return ip + ":" + port + "/" +  projectName
 }
 
 /*
-* 获取uuid
-*
-* */
+ * 获取uuid
+ *
+ * */
 function getUUID(){
     return getUrl() + "/souronguser/getUUID.action"
 }
@@ -65,10 +65,8 @@ function  verify(){
     if(userid == null){
         // 未登录  ,弹出模态框
         return false;
-        /* $('#Modal').modal('show')*/
     }else{
         return true ;
-        /* slideout_right.toggle();*/
     }
 
 }
@@ -89,13 +87,13 @@ $("#logoff").click(function(){
 $("#btn_login").click(function(){
     login(function () {
         if(type=="slide"){
-        slideout_right.toggle();
+            slideout_right.toggle();
         }
-        });
+    });
 })
 /*
-* 点击侧边栏注册效果，打开侧边栏
-* */
+ * 点击侧边栏注册效果，打开侧边栏
+ * */
 $("#btn_register").on("click",function(){
     doRegister(function(){
         if(type=="slide") {
@@ -120,22 +118,94 @@ $("#register").on("click",function(){
     });
 });
 
+
+
+/*---------登陆框正则检验------------*/
+$("#phone").change(function(){
+    var phone = $("#phone").val()
+    var that = this
+    if(!checkPhone(phone)){
+        layer.tips('请输入正确的手机格式',that,{
+            tips:1,
+            time:2000
+        });
+        $("#phone").focus();
+
+    }
+});
+$("#passwd").change(function(){
+    var passwd = $("#passwd").val();
+    var that = this;
+    if(passwd == null || passwd == ""){
+        layer.tips('密码不能为空哦',that,{
+            tips:1,
+            time:2000
+        });
+        $("#passwd").focus();
+    }
+});
+/*-----------end---------------*/
+
+
+/*------------注册框正则检验---------------*/
+$("#register_phone").change(function(){
+    var phone = $("#register_phone").val();
+    var that = this;
+    if(!checkPhone(phone)){
+        layer.tips('请输入正确的手机格式',that,{
+            tips:1,
+            time:2000
+        });
+        $("#register_phone").focus();
+    }
+});
+$("#register_username").change(function(){
+    var username = $("#register_username").val();
+    var that = this;
+    if(!checkUserName(username)){
+        layer.tips('亲！只支持中文名和英文名哦',that,{
+            tips:1,
+            time:2000
+        });
+        $("#register_username").focus();
+
+    }
+});
+$("#register_passwd").change(function(){
+    var password = $("#register_passwd").val();
+    var that = this ;
+    if(password == null || password == ""){
+        layer.tips('密码不能为空哦',that,{
+            tips:1,
+            time:2000
+        });
+        $("#register_passwd").focus();
+
+    }
+});
+/*-----------------end------------------------------*/
+
 /*
-* 登录函数
-* */
+ * 登录函数
+ * */
 function  login(success){
     var phone = $("#phone").val();
     var passwd = $("#passwd").val();
     if(!checkPhone(phone)){
-        return
+        layer.tips('请输入正确的手机格式',$("#phone"),{
+            tips:1,
+            time:2000
+        });
+        $("#phone").focus();
+        return;
     }
-   /* if(phone == null || phone == ""){
-        alert("请输入正确的手机号！");
-        return ;
-    }*/
     if(passwd == null || passwd == ""){
-        alert("请输入密码！");
-        return ;
+        layer.tips('密码不能为空哦',$("#passwd"),{
+            tips:1,
+            time:2000
+        });
+        $("#passwd").focus();
+        return;
     }
     $.ajax({
         url:getSalt(),
@@ -186,18 +256,27 @@ function doRegister(success){
     var username = $("#register_username").val();
     var userphone = $("#register_phone").val();
     var password = $("#register_passwd").val();
-    /*if(userphone == null || userphone == ""){
-        alert("请输入正确的手机号！")
-        return
-    }*/
     if(!checkPhone(userphone)){
-        return
+        layer.tips('请输入正确的手机格式',$("#register_phone"),{
+            tips:1,
+            time:2000
+        });
+        $("#register_phone").focus();
+        return ;
     }
     if(!checkUserName(username)){
-        return
+        layer.tips('亲！只支持中文名和英文名哦',$("#register_username"),{
+            tips:1,
+            time:2000
+        });
+        $("#register_username").focus();
+        return ;
     }
     if(password == null || password == ""){
-        alert("请输入密码！")
+        layer.tips('密码不能为空哦',$("#register_passwd"),{
+            tips:1,
+            time:2000
+        });
         return
     }
     var salt = ""
@@ -239,7 +318,6 @@ function checkPhone(phone){
     if((/^1(3|4|5|7|8)\d{9}$/.test(phone))){
         return true;
     }else{
-        alert("手机号码有误，请重填");
         return false ;
     }
 }
@@ -247,7 +325,6 @@ function checkUserName(username){
     if((/^([\u4e00-\u9fa5 ]{2,20}|[a-zA-Z\/ ]{2,20})$/.test(username))){
         return true;
     }else{
-        alert("姓名输入有误");
         return false ;
     }
 }
