@@ -8,7 +8,7 @@ var mySwiper = new Swiper('#swiper_1',{
 });
 $(window).load(function(){
     window.animatelo.bounceInLeft('#logoAction');
-})
+});
 $(function(){
     $("#collection").on("click",function(){
         var src = $("#collection").attr('src');
@@ -17,19 +17,19 @@ $(function(){
         } else{
             this.src = "images/collection.png";
         }
-    })
+    });
     $("#mask").on('click',function(){
         $("#mask").css("display","");
         $("#model").css("display","");
         $("#model").css("opacity",0);
         $("body").css("overflow", "auto")
-    })
+    });
     $(".bdsharebuttonbox a").mouseover(function () {
         ShareURL = $(this).attr("data-url");
     });
     $("#confirm-btn").on("click",function(){
         if(verify()){
-            consult();
+            consult(productid);
         }else{
             type = "consult";
             layer.open({
