@@ -91,6 +91,6 @@ function consult(carId) {
         },
         error: function () {
 
-        },
+        }
     })
 }
