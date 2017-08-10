@@ -10,8 +10,8 @@ $(function () {
         return;
         for (var i = 0; i < data.length; i++) {
             var item = data[i];
-            cameraWrap.append('<div  data-src="images/' + item.coverpic + '" data-link="xiangqing.html">'
-                + '<div class="camera_caption fadeFromBottom" data-id="' + item.productid + '">' + item.picintroduction + '</div></div>');
+            cameraWrap.append('<div  data-src="images/' + item.coverpic + '" data-link="xiangqing.html?productid='+item.productid+'">'
+                + '<div class="camera_caption fadeFromBottom">' + item.picintroduction + '</div></div>');
         }
         var cur = 0;
         var temp = $('.animate-price');

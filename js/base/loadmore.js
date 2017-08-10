@@ -7,24 +7,12 @@ $(function () {
         var market_price = data.marketprice||'好多';
         var sourong_price = data.sourongprice||'很少';
 
-        var outer_div = $('<div class="popular-car" style="position: relative"></div>');
-        var link = "window.location.href='xiangqing.html'";
-        var img = $('<img/>').prop('src', data.coverpic&&('images/'+data.coverpic)).attr('onclick', link).css({
-            'width': '100%',
-            'height': '50vw'
-            //'margin-top': '-10vw'
-        });
+        var outer_div = $('<div class="popular-car"></div>');
+        var link = "window.location.href='xiangqing.html?productid="+data.productid+"'";
+        var img = $('<img/>').prop('src', data.coverpic&&('images/'+data.coverpic)).attr('onclick', link);
 
 
-        var inner_div = $('<div></div>').css({
-            'height': '15vw',
-            'position': 'absolute',
-            'bottom': '0',
-            'background-color': 'rgba(0,0,0,0.5)',
-            'color': 'white',
-            'text-align': 'center',
-            'width': '100%'
-        });
+        var inner_div = $('<div/>');
         /*
          var inner_div = $('<div></div>').css({
          'height': '15vw',
@@ -38,18 +26,13 @@ $(function () {
          'width': '100%'
          });
         */
-        var inner_div_1 = $('<div class="col-xs-6" style="margin-top: 2vw">' +
-            '<span style="font-size: 8vw;">' + car_type + '</span></div>');
+        var inner_div_1 = $('<div class="col-xs-6"><span">' + car_type + '</span></div>');
 
-        var inner_div_2 = $('<div class="col-xs-6" style="font-size: 4vw;">' +
-            '<div style="margin-top: 2vw">' +
-            '<span>市价：</span>' +
-            '<span style="text-decoration: line-through;">¥' + market_price + '万</span>' +
-            '</div>' +
-            '<div style="color: orangered">' +
-            '<span>搜融：</span>' +
-            '<span>¥' + sourong_price + '万</span>' +
-            '</div>' +
+        var inner_div_2 = $('<div class="col-xs-6">' +
+            '<div><span>市价：</span>' +
+            '<span>¥' + market_price + '万</span></div>' +
+            '<div><span>搜融：</span>' +
+            '<span>¥' + sourong_price + '万</span></div>' +
             '</div>');
 
         inner_div.append(inner_div_1);
