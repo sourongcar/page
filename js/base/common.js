@@ -3,7 +3,7 @@
  * Created by Administrator on 2017/8/7.
  */
 
-var ip = "http://192.168.20.43"
+var ip = "http://localhost"
 var port = "8080"
 var projectName = "sourong_car"
 
@@ -62,7 +62,6 @@ function getRegisterUrl(){
 function  verify(){
 
     var userid = window.sessionStorage.getItem("userid");
-    console.info(userid)
     if(userid == null){
         // 未登录  ,弹出模态框
         return false;
