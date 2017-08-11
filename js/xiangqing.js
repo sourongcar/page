@@ -14,13 +14,57 @@ $(function(){
      * 产品id
      * @type {number}
      */
+    //从主页传过来的procductid参数
     var productid=+location.search.split('=')[1];
     $("#collection").on("click",function(){
         var src = $("#collection").attr('src');
+
         if(src=="images/collection.png"){
             this.src = "images/after-collect.png";
+
+            <!--发送ajax 收藏请求-->
+            $.ajax({
+                url:"http://localhost:8080/sourong_car/collection/doAdd.action",
+                data:{
+                    userId : window.sessionStorage.getItem("userid"),
+                    productId:productid,
+
+                },
+                dataType:"json",
+                success:function(data){
+
+                    console.log("收藏成功");
+                    alert("收藏成功");
+
+                },
+                error:function(data){
+                    console.log("收藏失败");
+                    alert("收藏失败");
+                    $("#collection").attr("src","images/collection.png");
+                }
+            })
+
         } else{
             this.src = "images/collection.png";
+
+            <!--发送ajax 取消收藏请求-->
+            $.ajax({
+                url:"http://localhost:8080/sourong_car/collection/doCancel.action",
+                data:{
+                    userid : window.sessionStorage.getItem("userid"),
+                    productid:productid,
+                },
+                dataType:"json",
+                success:function(data){
+                    console.log("取消收藏成功");
+                    alert("取消收藏成功");
+                },
+                error:function(data){
+                    console.log("取消收藏失败");
+                    alert("取消收藏失败");
+                    $("#collection").attr("src","images/after-collect.png");
+                }
+            })
         }
     });
     $("#mask").on('click',function(){
@@ -37,17 +81,24 @@ $(function(){
             consult(productid);
         }else{
             type = "consult";
-            login_layer_index = layer.open({
-                type: 1,
-                content: $("#login"),
+            layer.open({
+                type: 0,
+                content:$("#login"),
                 scrollbar: false,
-                skin: 'hint',
-                btn: [],
-                title: false,
-                shadeClose: true,
-                closeBtn: false,
-                anim: 2,
-                area:'90%',
+                skin:'hint',
+                area:'80vw',
+                btn:[],
+                title:false,
+                shadeClose:true,
+                closeBtn:false,
+                anim:2,
+                time:2000,
+                success:function(layero,index){
+                    $("body").css("overflow","hidden")
+                },
+                end:function(){
+                    $("body").css("overflow","auto")
+                }
             });
         };
     });
@@ -128,23 +179,3 @@ with (document) 0[(getElementsByTagName('head')[0] || body)
     .appendChild(createElement('script'))
     .src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='
     + ~(-new Date() / 36e5)];
-
-$(function(){
-    /**
-     * 实现公司信息调用
-     */
-    $.ajax({
-        url:'http://localhost:8080/sourong_car/company/getCompanyinformation.action',
-        type:'POST',
-        dataType: "json",
-        success:function(data){
-            $("#CompanyAddressArea").text(data.companyaddress);
-            $("#CompanyPhoneArea").text(data.companyphone);
-            $("#ServiceTimeArea").text(data.servicetime);
-            $("#CompanyQRArea").attr("src",'http://localhost:8080/images/'+data.companyqr);
-        },
-        error: function () {
-
-        }
-    })
-});
