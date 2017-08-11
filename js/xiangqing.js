@@ -14,6 +14,7 @@ $(function(){
      * 产品id
      * @type {number}
      */
+    //从主页传过来的procductid参数
     var productid=+location.search.split('=')[1];
     var userid = window.sessionStorage.getItem("userid");
     $("#collection").on("click",function(){
@@ -69,17 +70,24 @@ $(function(){
             consult(productid);
         }else{
             type = "consult";
-            login_layer_index = layer.open({
-                type: 1,
-                content: $("#login"),
+            layer.open({
+                type: 0,
+                content:$("#login"),
                 scrollbar: false,
-                skin: 'hint',
-                btn: [],
-                title: false,
-                shadeClose: true,
-                closeBtn: false,
-                anim: 2,
-                area:'90%',
+                skin:'hint',
+                area:'80vw',
+                btn:[],
+                title:false,
+                shadeClose:true,
+                closeBtn:false,
+                anim:2,
+                time:2000,
+                success:function(layero,index){
+                    $("body").css("overflow","hidden")
+                },
+                end:function(){
+                    $("body").css("overflow","auto")
+                }
             });
         };
     });

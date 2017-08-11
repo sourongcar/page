@@ -10,6 +10,7 @@
     <link rel="stylesheet" type="text/css" href="css/Details_Style.css">
     <link rel="stylesheet" href="css/rocketTop.css">
     <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <style type="text/css">
     .header-navigation {
@@ -97,6 +98,22 @@
     .chebiao{
         display: inline-block;
         margin-left: 5%;
+        margin: 2px auto;
+        color: black;
+        text-overflow:ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        width: 100%;
+    }
+    .col-xs-3{
+        height: 30px;
+        white-space:nowrap;
+        overflow:hidden;
+        margin:7px auto;
+        padding: 0;
+        text-align: center;
+        border-bottom:1px solid red;
+        text-align: center;
     }
     .bottom-content{
         background: url('images/bottomcontent.png') no-repeat;
@@ -144,40 +161,32 @@
     <div style="background-color:#717171;height:3px"></div>
     <div style="background-color:#A0A0A0;height:3px"></div>
     <div style="background-color:#d0d0d0;height:3px"></div>
-    <div style="width:35%;margin-left: 32.5%">
-        <img src="images/cars_sign/BMW.png" width="100%">
+    <div style="width:100%;">
+        <!--图标-->
+        <div id="carsign" style="width:35%;margin-left: 32.5%">
+        </div>
+        <!--图标end-->
+        <!--车型名-->
+        <div class="container">
+
+            <div class="row" id="names">
+                <div class="col-xs-3" >
+                    <p style="color: orangered;margin-top: 7px;display: inline-block;text-align: center;"><div style="display: inline-block;border-left:2px solid orangered;text-align: center;">&nbsp</div>	全部：</p>
+                </div>
+
+                <div id="morebtn" class="col-xs-3" >
+                    <div class="car-sign-font" style="color:orangered ;">更多</div>
+                </div>
+
+                <div id="offbtn" class="col-xs-3" style="display: none;">
+
+                    <div class="car-sign-font" style="color: orangered;">收起</div>
+                </div>
+
+            </div>
+        </div>
     </div>
-
-        <div >
-
-            <ul>
-                <li style="margin-top: 0;border-bottom:1.2px solid orangered;">
-                    <div style="display: inline-block;border-left:2px solid orangered;">&nbsp</div>
-                    <p class='pri' style="display: inline-block;color: orangered">全部：</p>
-                    <a href='xiangqing.html'><p class='pri chebiao'  >1系</p></a>
-                    <a href='xiangqing.html'><p class='pri chebiao' >2系</p></a>
-                    <a href='xiangqing.html'><p class='pri chebiao'>3系</p></a>
-                    <a href='xiangqing.html'><p class='pri chebiao'  >5系</p></a>
-                    <a href='xiangqing.html'><p class='pri chebiao' >7系</p></a>
-                </li>
-                <li style="margin-top: 0;border-bottom:1.2px solid orangered;">
-                    <p class='pri' style="display: inline-block;width: 12%">&nbsp&nbsp</p>
-                    <a href='xiangqing.html'><p class='pri chebiao' > X1</p></a>
-                    <a href='xiangqing.html'><p class='pri chebiao' > X2</p></a>
-                    <a href='xiangqing.html'><p class='pri chebiao'> X5</p></a>
-                    <a href='xiangqing.html'><p class='pri chebiao' >Z4</p></a>
-                    <a href='xiangqing.html'><p class='pri chebiao' >X5插电混动</p></a>
-                </li>
-                <li  style="margin-top: 0;border-bottom:1.2px solid orangered;">
-                    <p class='pri' style="display: inline-block;width: 12%">&nbsp&nbsp</p>
-                    <a href='xiangqing.html'><p class='pri chebiao' >7系插电混动</p></a>
-                    <a href='xiangqing.html'><p class='pri chebiao' >i3</p></a>
-                    <a href='xiangqing.html'><p class='pri chebiao' >i8</p></a>
-                    <a href='xiangqing.html'><p class='pri chebiao' >X5</p></a>
-                    </a>
-                </li>
-             </ul>
-      </div>
+    <!--车型名end-->
     <!--每一款车型-->
     <div style="margin:5vw 5vw;height: 50vw;overflow:hidden;zoom:1;">
         <img src="images/sliders/slider1.jpg" onclick="window.location.href='xiangqing.html'" style="width: 100%;height: 50vw">
@@ -418,4 +427,6 @@
 <script type="text/javascript" src="js/base/jquery.md5.js"></script>
 <script type="text/javascript" src="js/base/layer/layer.js"></script>
 <script type="text/javascript" src="js/searchcarlist.js"></script>
+<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </html>
