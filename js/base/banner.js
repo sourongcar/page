@@ -87,9 +87,7 @@ $(function () {
 
             }
         });
-        $(".carlist").click(function () {
-            window.location.href = '/page/searchcarlist.html'
-        });
+
 
         var current_scroll_position = 0;
         $(window).scroll(function () {
@@ -102,13 +100,17 @@ $(function () {
 
         });
 
+
         $(".carlistshow").click(function () {
-            $("#carlistshow").css("display", "");
+            $(".car").css("display", "");
             $(this).css("display", "none");
+            $(".carlistoff").css("display","");
         });
+
         $(".carlistoff").click(function () {
-            $("#carlistshow").css("display", "none");
+            $(".car").css("display", "none");
             $(".carlistshow").css("display", "");
+            $(this).css("display","none");
         });
 
         $('#pic-collect').on('click', function () {
