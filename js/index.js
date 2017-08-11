@@ -52,7 +52,6 @@ $(function(){
         };
 
     });
-
 });
 function consult(carId) {
     var car_id = carId;

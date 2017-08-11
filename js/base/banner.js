@@ -1,23 +1,48 @@
 /**
  * Created by Administrator on 2017/07/30.
  */
+var productIdArray;//首页轮播图车的id数组
+var userCollectList;//用户首页轮播图收藏数值
 $(function () {
     $('#logo-car').addClass('slideInLeft');
     var cameraWrap = $('#camera_wrap_1');
     var loader = $('<div class="camera_loader"/>').appendTo(cameraWrap);
+    var userid = window.sessionStorage.getItem("userid");
     $.getJSON("json/loopProduct.json", null, function (data) {//product/rest/looping.action
-        if(!data instanceof Array)
-        return;
+        if(!data instanceof Array) return;
+        productIdArray = new Array();
         for (var i = 0; i < data.length; i++) {
             var item = data[i];
             cameraWrap.append('<div  data-src="images/' + item.coverpic + '" data-link="xiangqing.html?productid='+item.productid+'">'
                 + '<div class="camera_caption fadeFromBottom" data-id="'+ item.productid +'">' + item.picintroduction + '</div></div>');
+            productIdArray.push(item.productid);
         }
-        var cur = 0;
+        var cur = 0,curindex=0;
         var temp = $('.animate-price');
         temp.eq(0).text('￥' + data[0].marketprice + '万');
         temp.eq(1).text('￥' + data[0].sourongprice + '万');
         loader.remove();
+        if(verify()){
+            $.ajax({
+                url:"http://localhost:8080/sourong_car/collection/ifBeCollected.action",
+                type:"get",
+                data:$.param({userid:userid,productIdList:productIdArray},true),
+                dataType:"json",
+                success:function (data) {
+                    userCollectList = data;
+                    console.log(data);
+                    var currentDisplayCar = $('.cameraContent div.camera_caption').eq(curindex).data('id');
+                    for(var i = 0;i < userCollectList.length;i++){
+                        if(currentDisplayCar == userCollectList[i].productid){
+                            $('#pic-collect').attr('src','images/after-collect.png');
+                            break;
+                        }else{
+                            $('#pic-collect').attr('src','images/before_collect.png');
+                        }
+                    }
+                }
+            });
+        }
         cameraWrap.camera({
             loader: 'bar',
             mobileAutoAdvance: true,
@@ -36,9 +61,23 @@ $(function () {
                     temp.removeClass('bounceIn').addClass('bounceOut');
                     setTimeout(function () {
                         temp.removeClass('bounceOut').addClass('bounceIn');
-                        var curdata = data[++cur % data.length];
+                        curindex=++cur % data.length;
+                        var curdata = data[curindex];
                         temp.eq(0).text('￥' + curdata.marketprice + '万');
                         temp.eq(1).text('￥' + curdata.sourongprice + '万');
+
+                        if(userCollectList == undefined){
+                            return;
+                        }
+                        var currentDisplayCar = $('.cameraContent div.camera_caption').eq(curindex).data('id');
+                        for(var i = 0;i < userCollectList.length;i++){
+                            if(currentDisplayCar == userCollectList[i].productid){
+                                $('#pic-collect').attr('src','images/after-collect.png');
+                                break;
+                            }else{
+                                $('#pic-collect').attr('src','images/before_collect.png');
+                            }
+                        }
                     }, 1000);
                 } else if (temp.hasClass('bounceOut')) {
                     temp.removeClass('bounceOut').addClass('bounceIn');
@@ -48,7 +87,6 @@ $(function () {
 
             }
         });
-
         $(".carlist").click(function () {
             window.location.href = '/page/searchcarlist.html'
         });
@@ -76,11 +114,47 @@ $(function () {
         $('#pic-collect').on('click', function () {
             var pc=$('#pic-collect');
             var $src = pc.attr('src');
-            if ($src === 'images/before_collect.png') {
-                pc.attr('src', 'images/after-collect.png');
-            } else if ($src === 'images/after-collect.png') {
-                pc.attr('src', 'images/before_collect.png');
+            if(!verify()){
+                type = "collect";
+                login_layer_index = layer.open({
+                    type: 1,
+                    content: $("#login"),
+                    scrollbar: false,
+                    skin: 'hint',
+                    btn: [],
+                    title: false,
+                    shadeClose: true,
+                    closeBtn: false,
+                    anim: 2,
+                    area:'90%',
+                });
+            }else{
+                var userid = window.sessionStorage.getItem("userid");
+                var productid = $('.cameracurrent.cameraContent div').data('id');
+                $.ajax({
+                    url:"http://localhost:8080/sourong_car/collection/operateUserCollection.action",
+                    type:"get",
+                    data:{userid:userid,productid:productid},
+                    dataType:"json",
+                    success:function (data) {
+                        console.log(data);
+                        if(productid === data.productid){
+                            userCollectList.push(data);
+                            $('#pic-collect').attr('src','images/after-collect.png');
+                        }else{
+                            for(var i = 0;i < userCollectList.length;i++){
+                                if(userCollectList[i].productid === productid){
+                                    userCollectList.splice(i,1);
+                                    console.log(userCollectList);
+                                    $('#pic-collect').attr('src','images/before_collect.png');
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                })
             }
+
         });
     })
 
