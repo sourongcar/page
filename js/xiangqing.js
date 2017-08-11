@@ -15,13 +15,45 @@ $(function(){
      * @type {number}
      */
     var productid=+location.search.split('=')[1];
+    var userid = window.sessionStorage.getItem("userid");
     $("#collection").on("click",function(){
-        var src = $("#collection").attr('src');
+        if(verify()){
+            $.ajax({
+                url:"http://localhost:8080/sourong_car/collection/operateUserCollection.action",
+                type:"post",
+                data:{userid:userid,productid:productid},
+                dataType:"json",
+                success:function (data) {
+                    console.log(data);
+                    if(productid === data.productid){
+                        $('#collection').attr('src','images/after-collect.png');
+                    }else{
+                        $('#collection').attr('src','images/before_collect.png');
+                        }
+                    }
+                }
+            });
+        }else{
+            type = "collect";
+            login_layer_index = layer.open({
+                type: 1,
+                content: $("#login"),
+                scrollbar: false,
+                skin: 'hint',
+                btn: [],
+                title: false,
+                shadeClose: true,
+                closeBtn: false,
+                anim: 2,
+                area:'90%',
+            });
+        }
+       /* var src = $("#collection").attr('src');
         if(src=="images/collection.png"){
             this.src = "images/after-collect.png";
         } else{
             this.src = "images/collection.png";
-        }
+        }*/
     });
     $("#mask").on('click',function(){
         $("#mask").css("display","");

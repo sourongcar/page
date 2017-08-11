@@ -133,7 +133,7 @@ $(function () {
                 var productid = $('.cameracurrent.cameraContent div').data('id');
                 $.ajax({
                     url:"http://localhost:8080/sourong_car/collection/operateUserCollection.action",
-                    type:"get",
+                    type:"post",
                     data:{userid:userid,productid:productid},
                     dataType:"json",
                     success:function (data) {
@@ -145,7 +145,6 @@ $(function () {
                             for(var i = 0;i < userCollectList.length;i++){
                                 if(userCollectList[i].productid === productid){
                                     userCollectList.splice(i,1);
-                                    console.log(userCollectList);
                                     $('#pic-collect').attr('src','images/before_collect.png');
                                     break;
                                 }
