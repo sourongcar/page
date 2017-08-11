@@ -13,7 +13,6 @@ $(document).ready(function(){
           
             data=JSON.parse(data);
             $.each(data, function(i,n) {
-                
                 if (i<9) {
                 var images="<div  class='car-sign carlist'>";
                 images+="<a href='searchcarlist.html?brandid="+n["brandid"]+"&&brandpic="+n["brandpic"]+"'><img  src='http://localhost:8080/images/"+n["brandpic"]+"'"+"class='car-sign-img'></a>";
