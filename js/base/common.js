@@ -68,7 +68,6 @@ function  verify(){
     }else{
         return true ;
     }
-
 }
 
 //退出登录
