@@ -147,8 +147,8 @@
     </div>
     <div class="Details_Price_Body">
         <div class="col-xs-6 col-sm-6">
-            <div style="text-decoration: line-through;height: 8vw"><span>市价：</span><span>￥150万</span></div>
-            <div style="color: orangered;height: 8vw"><span>搜融：</span><span>￥140万</span></div>
+            <div style="text-decoration: line-through;height: 8vw"><span>市价：</span><span id="marketprice">未知</span></div>
+            <div style="color: orangered;height: 8vw"><span>搜融：</span><span id="sourongprice">未知</span></div>
         </div>
         <div style="padding-top: 3vw" class="col-xs-6 col-sm-6">
             <a href="#0" id="confirm-btn">
@@ -162,13 +162,15 @@
     <!-- introduce -->
     <div class="Details_Introduce_Title"><span><b>汽车详细信息</b></span></div>
     <div class="Details_Introduce_Body">
-        <p><span>车身尺寸：</span><span>4519*1831*1694</span></p>
-        <p><span>车身结构：</span><span>SUV</span></p>
-        <p><span>发动机：</span><span>2.0L&nbsp;&nbsp;141马力&nbsp;&nbsp;L4</span></p>
-        <p><span>驱动方式：</span><span>前置驱动</span></p>
-        <p><span>综合油耗：</span><span>7.2/100KM&nbsp;&nbsp;(工信部)</span></p>
-        <p><span>整车质保：</span><span>4年或10万公里</span></p>
-        <p><span>变数箱：</span><span>6档手动</span></p>
+        <p><span>车身颜色：</span><span id="color">未知</span></p>
+        <p><span>车身尺寸：</span><span id="size">未知</span></p>
+        <p><span>车身结构：</span><span id="structure">未知</span></p>
+        <p><span>发动机：</span><span id="engine">未知</span></p>
+        <p><span>驱动方式：</span><span id="driverway">未知</span></p>
+        <p><span>综合油耗：</span><span id="comprehensiveoilconsumption">未知</span></p>
+        <p><span>车主油耗：</span><span id="mainoilconsumption">未知</span></p>
+        <p><span>整车质保：</span><span id="warranty">未知</span></p>
+        <p><span>变速箱：</span><span id="transmissioncase">未知</span></p>
     </div>
     <div class="showmore" style="display: none;text-align: center;margin-top: 5%;margin-bottom: 5%">
         <div style="background-color:#d0d0d0;height:3px"></div>

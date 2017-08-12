@@ -15,6 +15,29 @@ $(function(){
      * @type {number}
      */
     //从主页传过来的procductid参数
+    var productid=+location.search.split('=')[1];
+    $.getJSON('http://localhost:8080/sourong_car/product/rest/getFull.action',{id:productid},function(data){//json/config.json
+        if(data){
+            $('.Details_Price_Title p').text(data.title);
+            var dpb= $(".Details_Price_Body");
+            dpb.find('#marcketprice').text("￥"+data.marketprice+"万");
+            dpb.find('#sourongprice').text("￥"+data.sourongprice+"万");
+            data=data.configuration;
+            if(!data) {
+                return;
+            }
+            var dib= $(".Details_Introduce_Body");
+            dib.find('#size').text(data.size);
+            dib.find('#structure').text(data.structure);
+            dib.find('#engine').text(data.engine);
+            dib.find('#driverway').text(data.driverway);
+            dib.find('#mainoilconsumption').text(data.mainoilconsumption);
+            dib.find('#comprehensiveoilconsumption').text(data.comprehensiveoilconsumption);
+            dib.find('#color').text(data.color);
+            dib.find('#warranty').text(data.warranty);
+            dib.find('#transmissioncase').text(data.transmissioncase);
+        }
+    });
     if(verify()){
         var productIdArray = new Array();
         var productid=+location.search.split('=')[1];

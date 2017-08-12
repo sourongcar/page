@@ -1,0 +1,54 @@
+{
+  "productid": 1,
+  "configuration": {
+    "color": "红色",
+    "mainoilconsumption": "7.2/100KM",
+    "comprehensiveoilconsumption": "7.2/100KM  (工信部)",
+    "size": "4519*1831*1631",
+    "structure": "SUV",
+    "warranty": "1年或1万公里",
+    "transmissioncase": "7档手动",
+    "engine": "2.0L  111马力  L1",
+    "driverway": "前置驱动"
+  },
+  "brandname": "宝马",
+  "cartype": "宝马003",
+  "marketprice": "23",
+  "sourongprice": "21",
+  "title": "宝马"
+}
+
+var productid=+location.search.split('=')[1];
+$.getJSON('//localhost:8080/sourong_car/product/rest/getFull.action',{id:productid},function(data){//json/config.json
+if(data){
+$('.Details_Price_Title p').text(data.title);
+var dpb= $(".Details_Price_Body");
+dpb.find('#marcketprice').text("￥"+data.marketprice+"万");
+dpb.find('#sourongprice').text("￥"+data.sourongprice+"万");
+data=data.configuration;
+if(!data) {
+return;
+}
+var dib= $(".Details_Introduce_Body");
+dib.find('#size').text(data.size);
+dib.find('#structure').text(data.structure);
+dib.find('#engine').text(data.engine);
+dib.find('#driverway').text(data.driverway);
+dib.find('#mainoilconsumption').text(data.mainoilconsumption);
+dib.find('#comprehensiveoilconsumption').text(data.comprehensiveoilconsumption);
+dib.find('#color').text(data.color);
+dib.find('#warranty').text(data.warranty);
+dib.find('#transmissioncase').text(data.transmissioncase);
+}
+});
+
+
+<p><span>车身颜色：</span><span id="color">未知</span></p>
+<p><span>车身尺寸：</span><span id="size">未知</span></p>
+<p><span>车身结构：</span><span id="structure">未知</span></p>
+<p><span>发动机：</span><span id="engine">未知</span></p>
+<p><span>驱动方式：</span><span id="driverway">未知</span></p>
+<p><span>综合油耗：</span><span id="comprehensiveoilconsumption">未知</span></p>
+<p><span>车主油耗：</span><span id="mainoilconsumption">未知</span></p>
+<p><span>整车质保：</span><span id="warranty">未知</span></p>
+<p><span>变速箱：</span><span id="transmissioncase">未知</span></p>
