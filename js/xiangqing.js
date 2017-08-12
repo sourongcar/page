@@ -15,11 +15,10 @@ $(function(){
     $.getJSON('http://localhost:8080/sourong_car/carpicture/rest/getFull.action',{productid:productid},function(data){
         if(!data)
             return;
-        var looping=data.looping,more=data.more;
-        var swiper=$('#swiper_1'),wapper=swiper.find('.swiper-wrapper');
+        var swiper=$('#swiper_1'),wapper=$('<div class="swiper-wrapper"/>');
         var content=$("#mode_content");
         var loopingend=false;
-        if(data&&data instanceof Array&&data.length>0){
+        if(data&&data instanceof Array){
             for(var i=0;i<data.length;i++){
                 if(data[i].picture){
                     if(data[i].islooping==0){
@@ -27,11 +26,6 @@ $(function(){
                     }
                     else if(data[i].islooping==1){
                         if(!loopingend){
-                            var mySwiper = new Swiper('#swiper_1',{
-                                loop: true,
-                                autoplay: 3000,
-                                autoplayDisableOnInteraction : false
-                            });
                             loopingend=true;
                         }
                         content.find('div').text('');
@@ -40,8 +34,19 @@ $(function(){
                     }
                 }
             }
+            if(wapper.children().length>0) {
+                wapper.appendTo(swiper);
+                new Swiper('#swiper_1', {
+                    loop: true,
+                    autoplay: 3000,
+                    autoplayDisableOnInteraction: false
+                });
+            }
+            else{
+                swiper.css({textAlign:'center',lineHeight:'50vw',fontSize:'10vw'}).text('暂无图片');
+            }
         }
-    })
+    });
     $.getJSON('http://localhost:8080/sourong_car/product/rest/getFull.action',{id:productid},function(data){//json/config.json
         if(data){
             $('.Details_Price_Title p').text(data.title);
@@ -65,8 +70,7 @@ $(function(){
         }
     });
     if(verify()){
-        var productIdArray = new Array();
-        var productid=+location.search.split('=')[1];
+        var productIdArray = [];
         var userid = window.sessionStorage.getItem("userid");
         productIdArray.push(productid);
         $.ajax({
@@ -98,7 +102,7 @@ $(function(){
                 shadeClose: true,
                 closeBtn: false,
                 anim: 2,
-                area:'90%',
+                area:'90%'
             });
         }
        /* var src = $("#collection").attr('src');
@@ -110,8 +114,7 @@ $(function(){
     });
     $("#mask").on('click',function(){
         $("#mask").css("display","");
-        $("#model").css("display","");
-        $("#model").css("opacity",0);
+        $("#model").css("display","").css("opacity",0);
         $("body").css("overflow", "auto")
     });
     $(".bdsharebuttonbox a").mouseover(function () {
@@ -141,7 +144,7 @@ $(function(){
                     $("body").css("overflow","auto")
                 }
             });
-        };
+        }
     });
     $("#shar_img").on('click',function(){
         layer.open({
@@ -208,10 +211,9 @@ function ShowMask(){
         $("#model").css("height",model_content_height+"px");
     }
     var top = (widow_height-$("#model")[0].offsetHeight)/2;
-    $("#model").css("top",top+"px");
-    $("#model").css("opacity",1);
+    $("#model").css("top",top+"px").css("opacity",1);
     $("body").css("overflow", "hidden")
-};
+}
 //全局变量，动态的文章ID
 var ShareURL = "";
 //绑定所有分享按钮所在A标签的鼠标移入事件，从而获取动态ID
