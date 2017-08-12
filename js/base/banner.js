@@ -13,7 +13,7 @@ $(function () {
         productIdArray = new Array();
         for (var i = 0; i < data.length; i++) {
             var item = data[i];
-            cameraWrap.append('<div  data-src="images/' + item.coverpic + '" data-link="xiangqing.html?productid='+item.productid+'">'
+            cameraWrap.append('<div  data-src="http://localhost:8080/images/' + item.coverpic + '" data-link="xiangqing.html?productid='+item.productid+'">'
                 + '<div class="camera_caption fadeFromBottom" data-id="'+ item.productid +'">' + item.picintroduction + '</div></div>');
             productIdArray.push(item.productid);
         }

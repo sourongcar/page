@@ -3,13 +3,13 @@
  */
 $(function () {
     function createFrom(data) {
-        var car_type = data.title;
+        var car_type = data.title||'暂无数据';
         var market_price = data.marketprice||'好多';
         var sourong_price = data.sourongprice||'很少';
 
         var outer_div = $('<div class="popular-car"></div>');
         var link = "window.location.href='xiangqing.html?productid="+data.productid+"'";
-        var img = $('<img/>').prop('src', data.coverpic&&('images/'+data.coverpic)).attr('onclick', link);
+        var img = $('<img/>').prop('src', data.coverpic&&('http://localhost:8080/images/'+data.coverpic)).attr('onclick', link);
 
 
         var inner_div = $('<div/>');
@@ -26,7 +26,7 @@ $(function () {
          'width': '100%'
          });
         */
-        var inner_div_1 = $('<div class="col-xs-6"><span">' + car_type + '</span></div>');
+        var inner_div_1 = $('<div class="col-xs-6"><span">'+car_type+'</span></div>');
 
         var inner_div_2 = $('<div class="col-xs-6">' +
             '<div><span>市价：</span>' +
@@ -54,9 +54,8 @@ $(function () {
             }
         },10);
 
-        $.getJSON('json/displayProduct.json',null,function(data) {//'product/rest/display.action?offset='+carlist.children().length
+        $.getJSON('http://localhost:8080/sourong_car/product/rest/display.action?offset='+carlist.children().length,null,function(data) {//'product/rest/display.action?offset='+carlist.children().length
             //   $('.get-more').css({'display':'none'});
-            console.log('product/rest/display.action?offset='+carlist.children().length);
             if(data.end){
                 $('#load-label').remove();
             }

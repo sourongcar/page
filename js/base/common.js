@@ -76,7 +76,7 @@ $("#logoff").click(function(){
     window.sessionStorage.clear()
     console.info("已退出。。。。")
     //提交请求到服务器......
-    window.location = getIndexUrl()
+    window.location = "index.html"
 })
 
 
