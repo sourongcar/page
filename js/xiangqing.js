@@ -1,11 +1,7 @@
 /**
  * Created by Franky on 2017/8/7.
  */
-var mySwiper = new Swiper('#swiper_1',{
-    loop: true,
-    autoplay: 3000,
-    autoplayDisableOnInteraction : false
-});
+
 $(window).load(function(){
     window.animatelo.bounceInLeft('#logoAction');
 });
@@ -16,11 +12,41 @@ $(function(){
      */
     //从主页传过来的procductid参数
     var productid=+location.search.split('=')[1];
+    $.getJSON('http://localhost:8080/sourong_car/carpicture/rest/getFull.action',{productid:productid},function(data){
+        if(!data)
+            return;
+        var looping=data.looping,more=data.more;
+        var swiper=$('#swiper_1'),wapper=swiper.find('.swiper-wrapper');
+        var content=$("#mode_content");
+        var loopingend=false;
+        if(data&&data instanceof Array&&data.length>0){
+            for(var i=0;i<data.length;i++){
+                if(data[i].picture){
+                    if(data[i].islooping==0){
+                        $('<div class="swiper-slide"><img src="http://localhost:8080/images/'+data[i].picture+'" style="width: 100%;height: 100%"></div>').appendTo(wapper);
+                    }
+                    else if(data[i].islooping==1){
+                        if(!loopingend){
+                            var mySwiper = new Swiper('#swiper_1',{
+                                loop: true,
+                                autoplay: 3000,
+                                autoplayDisableOnInteraction : false
+                            });
+                            loopingend=true;
+                        }
+                        content.find('div').text('');
+                        var link='http://localhost:8080/images/'+data[i].picture;
+                        $('<a href="'+link+'"><img src="'+link+'" style="width: 24vw;;height: 24vw;margin: 0.5vw 0.5vw;float: left"></a>').prependTo(content);
+                    }
+                }
+            }
+        }
+    })
     $.getJSON('http://localhost:8080/sourong_car/product/rest/getFull.action',{id:productid},function(data){//json/config.json
         if(data){
             $('.Details_Price_Title p').text(data.title);
             var dpb= $(".Details_Price_Body");
-            dpb.find('#marcketprice').text("￥"+data.marketprice+"万");
+            dpb.find('#marketprice').text("￥"+data.marketprice+"万");
             dpb.find('#sourongprice').text("￥"+data.sourongprice+"万");
             data=data.configuration;
             if(!data) {
@@ -49,7 +75,7 @@ $(function(){
             data:$.param({userid:userid,productIdList:productIdArray},true),
             dataType:"json",
             success:function (data) {
-                    if(data[0].productid != -1){
+                    if(data[0]&&data[0].productid == productid){
                         $('#collection').attr('src','images/after-collect.png');
                     }else{
                         $('#collection').attr('src','images/before_collect.png');

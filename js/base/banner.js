@@ -8,7 +8,7 @@ $(function () {
     var cameraWrap = $('#camera_wrap_1');
     var loader = $('<div class="camera_loader"/>').appendTo(cameraWrap);
     var userid = window.sessionStorage.getItem("userid");
-    $.getJSON("json/loopProduct.json", null, function (data) {//product/rest/looping.action
+    $.getJSON("http://localhost:8080/sourong_car/product/rest/looping.action", null, function (data) {//json/loopProduct.json
         if(!data instanceof Array) return;
         productIdArray = new Array();
         for (var i = 0; i < data.length; i++) {
