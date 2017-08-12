@@ -88,29 +88,32 @@ $("#btn_login").click(function(){
     login(function () {
         if(type=="slide"){
             slideout_right.toggle();
-        }
-        var userid = window.sessionStorage.getItem("userid");
-        $.ajax({
-            url:"http://localhost:8080/sourong_car/collection/ifBeCollected.action",
-            type:"get",
-            data:$.param({userid:userid,productIdList:productIdArray},true),
-            dataType:"json",
-            success:function (data) {
-                userCollectList = data;
-                var currentDisplayCarId = $('.cameracurrent.cameraContent div').data('id');
-                console.log("currentDisplayCarId:" + currentDisplayCarId);
-                for(var i = 0;i < userCollectList.length;i++){
-                    if(currentDisplayCarId == userCollectList[i].productid){
-                        $('#pic-collect').attr('src','images/after-collect.png');
-                        break;
-                    }else{
-                        $('#pic-collect').attr('src','images/before_collect.png');
+        }else if(type=="collectOnIndex"){
+            var userid = window.sessionStorage.getItem("userid");
+            $.ajax({
+                url:"http://localhost:8080/sourong_car/collection/ifBeCollected.action",
+                type:"get",
+                data:$.param({userid:userid,productIdList:productIdArray},true),
+                dataType:"json",
+                success:function (data) {
+                    userCollectList = data;
+                    var currentDisplayCarId = $('.cameracurrent.cameraContent div').data('id');
+                    console.log("currentDisplayCarId:" + currentDisplayCarId);
+                    for(var i = 0;i < userCollectList.length;i++){
+                        if(currentDisplayCarId == userCollectList[i].productid){
+                            $('#pic-collect').attr('src','images/after-collect.png');
+                            break;
+                        }else{
+                            $('#pic-collect').attr('src','images/before_collect.png');
+                        }
                     }
                 }
-            }
-        });
+            });
+        }else if(type == "collectOnProductDetail"){
+            operateUserCollection();
+        }
     });
-})
+});
 /*
  * 点击侧边栏注册效果，打开侧边栏
  * */
@@ -120,7 +123,7 @@ $("#btn_register").on("click",function(){
             slideout_right.toggle();
         }
     });
-})
+});
 
 $("#register").on("click",function(){
     layer.close(login_layer_index) ;
@@ -234,7 +237,6 @@ function  login(success){
             phone:phone ,
         },
         success:function(data){
-            console.info("------------------>" + data)
             var obj = JSON.parse(data);
             if (obj.status > -1 && obj.msg != ""){
                 var salt = obj.msg;
@@ -249,10 +251,8 @@ function  login(success){
                     success:function(data){
                         var obj = JSON.parse(data);
                         if (obj.status == 1){
-                            console.info(obj.msg);
                             window.sessionStorage.setItem("userid",userid);
                             layer.closeAll();
-                        //    window.location.href = "index.html";
                             if(success&&typeof success==='function' ){
                                 success();
                             }

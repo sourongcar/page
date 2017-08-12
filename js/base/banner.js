@@ -116,7 +116,7 @@ $(function () {
             var pc=$('#pic-collect');
             var $src = pc.attr('src');
             if(!verify()){
-                type = "collect";
+                type = "collectOnIndex";
                 login_layer_index = layer.open({
                     type: 1,
                     content: $("#login"),

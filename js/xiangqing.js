@@ -15,27 +15,30 @@ $(function(){
      * @type {number}
      */
     //从主页传过来的procductid参数
-    var productid=+location.search.split('=')[1];
-    var userid = window.sessionStorage.getItem("userid");
-    $("#collection").on("click",function(){
-        if(verify()){
-            $.ajax({
-                url:"http://localhost:8080/sourong_car/collection/operateUserCollection.action",
-                type:"post",
-                data:{userid:userid,productid:productid},
-                dataType:"json",
-                success:function (data) {
-                    console.log(data);
-                    if(productid === data.productid){
+    if(verify()){
+        var productIdArray = new Array();
+        var productid=+location.search.split('=')[1];
+        var userid = window.sessionStorage.getItem("userid");
+        productIdArray.push(productid);
+        $.ajax({
+            url:"http://localhost:8080/sourong_car/collection/ifBeCollected.action",
+            type:"get",
+            data:$.param({userid:userid,productIdList:productIdArray},true),
+            dataType:"json",
+            success:function (data) {
+                    if(data[0].productid != -1){
                         $('#collection').attr('src','images/after-collect.png');
                     }else{
                         $('#collection').attr('src','images/before_collect.png');
-                        }
                     }
                 }
             });
+    }
+    $("#collection").on("click",function(){
+        if(verify()){
+            operateUserCollection();
         }else{
-            type = "collect";
+            type = "collectOnProductDetail";
             login_layer_index = layer.open({
                 type: 1,
                 content: $("#login"),
@@ -113,7 +116,27 @@ $(function(){
         });
     });
 
-})
+});
+function operateUserCollection() {
+    var productid=+location.search.split('=')[1];
+    var userid = window.sessionStorage.getItem("userid");
+    console.log("productid" + productid);
+    console.log("userid" + userid);
+    $.ajax({
+        url:"http://localhost:8080/sourong_car/collection/operateUserCollection.action",
+        type:"post",
+        data:{userid:userid,productid:productid},
+        dataType:"json",
+        success:function (data) {
+            console.log(data);
+            if(productid === data.productid){
+                $('#collection').attr('src','images/after-collect.png');
+            }else{
+                $('#collection').attr('src','images/before_collect.png');
+            }
+        }
+    });
+}
 var oldIE = true;
 
 window.onload = function() {
