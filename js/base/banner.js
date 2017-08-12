@@ -30,7 +30,6 @@ $(function () {
                 dataType:"json",
                 success:function (data) {
                     userCollectList = data;
-                    console.log(data);
                     var currentDisplayCar = $('.cameraContent div.camera_caption').eq(curindex).data('id');
                     for(var i = 0;i < userCollectList.length;i++){
                         if(currentDisplayCar == userCollectList[i].productid){
@@ -139,9 +138,7 @@ $(function () {
                     data:{userid:userid,productid:productid},
                     dataType:"json",
                     success:function (data) {
-                        console.log(data);
                         if(productid === data.productid){
-                            userCollectList.push(data);
                             $('#pic-collect').attr('src','images/after-collect.png');
                         }else{
                             for(var i = 0;i < userCollectList.length;i++){
@@ -158,7 +155,4 @@ $(function () {
 
         });
     })
-
-
-
 });
