@@ -28,7 +28,7 @@ function getUrl(){
  *
  * */
 function getImgUrl(){
-    return  "http://"+ip + ":" + port + "/" +"/images/"
+    return  "http://"+ip + ":" + port +"/images/"
 }
 /*
  * 获取uuid
