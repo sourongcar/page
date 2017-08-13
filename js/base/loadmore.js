@@ -9,7 +9,7 @@ $(function () {
 
         var outer_div = $('<div class="popular-car"></div>');
         var link = "window.location.href='xiangqing.html?productid="+data.productid+"'";
-        var img = $('<img/>').prop('src', data.coverpic&&('http://localhost:8080/images/'+data.coverpic)).attr('onclick', link);
+        var img = $('<img/>').prop('src', data.coverpic&&(getImgUrl()+data.coverpic)).attr('onclick', link);
 
 
         var inner_div = $('<div/>');
@@ -54,7 +54,7 @@ $(function () {
             }
         },10);
 
-        $.getJSON('http://localhost:8080/sourong_car/product/rest/display.action?offset='+carlist.children().length,null,function(data) {//'product/rest/display.action?offset='+carlist.children().length
+        $.getJSON(getUrl()+'/product/rest/display.action?offset='+carlist.children().length,null,function(data) {//'product/rest/display.action?offset='+carlist.children().length
             //   $('.get-more').css({'display':'none'});
             if(data.end){
                 $('#load-label').remove();

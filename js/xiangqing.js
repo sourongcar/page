@@ -12,7 +12,7 @@ $(function(){
      */
     //从主页传过来的procductid参数
     var productid=+location.search.split('=')[1];
-    $.getJSON('http://localhost:8080/sourong_car/carpicture/rest/getFull.action',{productid:productid},function(data){
+    $.getJSON(getUrl()+'/carpicture/rest/getFull.action',{productid:productid},function(data){
         if(!data)
             return;
         var swiper=$('#swiper_1'),wapper=$('<div class="swiper-wrapper"/>');
@@ -22,14 +22,14 @@ $(function(){
             for(var i=0;i<data.length;i++){
                 if(data[i].picture){
                     if(data[i].islooping==0){
-                        $('<div class="swiper-slide"><img src="http://localhost:8080/images/'+data[i].picture+'" style="width: 100%;height: 100%"></div>').appendTo(wapper);
+                        $('<div class="swiper-slide"><img src="'+getImgUrl()+data[i].picture+'" style="width: 100%;height: 100%"></div>').appendTo(wapper);
                     }
                     else if(data[i].islooping==1){
                         if(!loopingend){
                             loopingend=true;
                         }
                         content.find('div').text('');
-                        var link='http://localhost:8080/images/'+data[i].picture;
+                        var link=getImgUrl()+data[i].picture;
                         $('<a href="'+link+'"><img src="'+link+'" style="width: 24vw;;height: 24vw;margin: 0.5vw 0.5vw;float: left"></a>').prependTo(content);
                     }
                 }
@@ -47,7 +47,7 @@ $(function(){
             }
         }
     });
-    $.getJSON('http://localhost:8080/sourong_car/product/rest/getFull.action',{id:productid},function(data){//json/config.json
+    $.getJSON(getUrl()+'/product/rest/getFull.action',{id:productid},function(data){//json/config.json
         if(data){
             $('.Details_Price_Title p').text(data.title);
             var dpb= $(".Details_Price_Body");
@@ -74,7 +74,7 @@ $(function(){
         var userid = window.sessionStorage.getItem("userid");
         productIdArray.push(productid);
         $.ajax({
-            url:"http://localhost:8080/sourong_car/collection/ifBeCollected.action",
+            url:getUrl()+"/collection/ifBeCollected.action",
             type:"get",
             data:$.param({userid:userid,productIdList:productIdArray},true),
             dataType:"json",
@@ -175,7 +175,7 @@ function operateUserCollection() {
     console.log("productid" + productid);
     console.log("userid" + userid);
     $.ajax({
-        url:"http://localhost:8080/sourong_car/collection/operateUserCollection.action",
+        url:getUrl()+"/collection/operateUserCollection.action",
         type:"post",
         data:{userid:userid,productid:productid},
         dataType:"json",
@@ -248,14 +248,14 @@ $(function(){
      * 实现公司信息调用
      */
     $.ajax({
-        url:'http://localhost:8080/sourong_car/company/getCompanyinformation.action',
+        url:getUrl()+'/company/getCompanyinformation.action',
         type:'POST',
         dataType: "json",
         success:function(data){
             $("#CompanyAddressArea").text(data.companyaddress);
             $("#CompanyPhoneArea").text(data.companyphone);
             $("#ServiceTimeArea").text(data.servicetime);
-            $("#CompanyQRArea").attr("src",'http://localhost:8080/images/'+data.companyqr);
+            $("#CompanyQRArea").attr("src",getImgUrl()+data.companyqr);
         },
         error: function () {
 

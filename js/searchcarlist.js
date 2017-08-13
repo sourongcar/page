@@ -14,7 +14,7 @@ $(window).load(function(){
 
         $.ajax({
             type: "get",
-            url: "http://localhost:8080/sourong_car/product/rest/getlistbydosearch.action?dosearch=" +dosearch,
+            url: getUrl()+"/product/rest/getlistbydosearch.action?dosearch=" +dosearch,
             async: true,
             success: function (data) {
                 data = JSON.parse(data);
@@ -23,8 +23,8 @@ $(window).load(function(){
                     $("#dosearchlist").html("<h2 style='text-align: center'>暂无产品</h2>")
                 }
                 for (i = 0; i < data.length; i++) {
-                    data[i].coverpic = 'http://localhost:8080/images/' + data[i].coverpic
-                    if (data[i].coverpic == null || data[i].coverpic == 'http://localhost:8080/images/' + undefined) {
+                    data[i].coverpic = getImgUrl() + data[i].coverpic
+                    if (data[i].coverpic == null || data[i].coverpic ==  getImgUrl() + undefined) {
                         data[i].coverpic = "/page/images/nocoverpic.png"
                     }
                     var carlist = '<div style="margin:5vw 5vw;height: 50vw;overflow:hidden;zoom:1;">'
@@ -47,7 +47,7 @@ $(window).load(function(){
     }else if(brandid.split("?")[1].split("=")[1]=="") {
         $.ajax({
             type: "get",
-            url: "http://localhost:8080/sourong_car/product/rest/getAlllist.action",
+            url: getUrl()+"/product/rest/getAlllist.action",
             async: true,
             success: function (data) {
                 data = JSON.parse(data);
@@ -56,7 +56,7 @@ $(window).load(function(){
                     $("#dosearchlist").html("<h2 style='text-align: center'>暂无产品</h2>")
                 }
                 for (i = 0; i < data.length; i++) {
-                    data[i].coverpic = 'http://localhost:8080/images/' + data[i].coverpic
+                    data[i].coverpic = getImgUrl() + data[i].coverpic
                     if (data[i].coverpic == null || data[i].coverpic == 'http://localhost:8080/images/' + undefined) {
                         data[i].coverpic = "/page/images/nocoverpic.png"
                     }
@@ -84,13 +84,13 @@ $(window).load(function(){
         var temp = new Array();
         temp = pic.split("=");
         var picname = temp[1];
-        var img = "<img src='http://localhost:8080/images/" + picname + "'width='100%'>";
+        var img = "<img src='"+getImgUrl() + picname + "'width='100%'>";
         $("#carsign").append(img);
 
 
         $.ajax({
             type: "get",
-            url: "http://localhost:8080/sourong_car/brand/getList.action" + brandid,
+            url: getUrl()+"/brand/getList.action" + brandid,
             async: true,
             success: function (data) {
                 data = JSON.parse(data);
@@ -117,7 +117,7 @@ $(window).load(function(){
                     $("#test").click(function () {
                         var cartype = $(this).text();
                         $.ajax({
-                            url: 'http://localhost:8080/sourong_car/product/rest/getProductByCarType.action',
+                            url: getUrl()+'/product/rest/getProductByCarType.action',
                             type: 'POST',
                             data: {
                                 cartype: cartype
@@ -129,8 +129,8 @@ $(window).load(function(){
                                     $(".carlistArea").html("<h2 style='text-align: center'>暂无产品</h2>")
                                 }
                                 for (i = 0; i < data.length; i++) {
-                                    data[i].coverpic = 'http://localhost:8080/images/' + data[i].coverpic
-                                    if (data[i].coverpic == null || data[i].coverpic == 'http://localhost:8080/images/' + undefined) {
+                                    data[i].coverpic =getImgUrl() + data[i].coverpic
+                                    if (data[i].coverpic == null || data[i].coverpic == getImgUrl() + undefined) {
                                         data[i].coverpic = "/page/images/nocoverpic.png"
                                     }
                                     var carlist = '<div style="margin:5vw 5vw;height: 50vw;overflow:hidden;zoom:1;">'
@@ -214,7 +214,7 @@ $(window).load(function(){
         function getAllcarlist() {
             id = brandid.split("=")[1]
             $.ajax({
-                url: 'http://localhost:8080/sourong_car/product/rest/getProductBybrandname.action',
+                url: getUrl()+'/product/rest/getProductBybrandname.action',
                 type: 'POST',
                 data: {
                     id: id
@@ -226,8 +226,8 @@ $(window).load(function(){
                         $(".carlistArea").html("<h2 style='text-align: center'>暂无产品</h2>")
                     }
                     for (i = 0; i < data.length; i++) {
-                        data[i].coverpic = 'http://localhost:8080/images/' + data[i].coverpic
-                        if (data[i].coverpic == null || data[i].coverpic == 'http://localhost:8080/images/' + undefined) {
+                        data[i].coverpic = getImgUrl() + data[i].coverpic
+                        if (data[i].coverpic == null || data[i].coverpic ==getImgUrl() + undefined) {
                             data[i].coverpic = "/page/images/nocoverpic.png"
                         }
                         var carlist = '<div style="margin:5vw 5vw;height: 50vw;overflow:hidden;zoom:1;">'
@@ -254,14 +254,14 @@ $(function(){
      * 实现公司信息调用
      */
     $.ajax({
-        url:'http://localhost:8080/sourong_car/company/getCompanyinformation.action',
+        url:getUrl()+'/company/getCompanyinformation.action',
         type:'POST',
         dataType: "json",
         success:function(data){
             $("#CompanyAddressArea").text(data.companyaddress);
             $("#CompanyPhoneArea").text(data.companyphone);
             $("#ServiceTimeArea").text(data.servicetime);
-            $("#CompanyQRArea").attr("src",'http://localhost:8080/images/'+data.companyqr);
+            $("#CompanyQRArea").attr("src",getImgUrl()+data.companyqr);
         },
         error: function () {
 

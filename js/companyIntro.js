@@ -9,7 +9,7 @@ $(function(){
      */
 
     $.ajax({
-        url:'http://localhost:8080/sourong_car/article/getArticle.action',
+        url: getUrl()+'/article/getArticle.action',
         type:'POST',
         dataType: "json",
         data:{
@@ -27,12 +27,12 @@ $(function(){
      * 实现公司信息调用
      */
     $.ajax({
-        url:'http://localhost:8080/sourong_car/company/getCompanyinformation.action',
+        url:getUrl()+'/company/getCompanyinformation.action',
         type:'POST',
         dataType: "json",
         success:function(data){
             $("#CompanyAddressArea").text(data.companyaddress);
-            $("#CompanyQRArea").attr("src",'http://localhost:8080/images/'+data.companyqr);
+            $("#CompanyQRArea").attr("src",getImgUrl()+data.companyqr);
         },
         error: function () {
 

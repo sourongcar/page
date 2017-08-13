@@ -13,14 +13,14 @@ $(function(){
  * 实现公司信息调用
  */
 $.ajax({
-    url:'http://localhost:8080/sourong_car/company/getCompanyinformation.action',
+    url: getUrl()+'/company/getCompanyinformation.action',
     type:'POST',
     dataType: "json",
     success:function(data){
         $("#CompanyAddressArea").text(data.companyaddress);
         $("#CompanyPhoneArea").text(data.companyphone);
         $("#ServiceTimeArea").text(data.servicetime);
-        $("#CompanyQRArea").attr("src",'http://localhost:8080/images/'+data.companyqr);
+        $("#CompanyQRArea").attr("src",'http://119.29.114.44:8080/images/'+data.companyqr);
     },
     error: function () {
 
@@ -57,7 +57,7 @@ function consult(carId) {
     var car_id = carId;
     var user_id = window.sessionStorage.getItem("userid");
     $.ajax({
-        url: "http://localhost:8080/sourong_car/consultant/forMoreInformation.action",
+        url:  getUrl()+"/consultant/forMoreInformation.action",
         type: 'POST',
         data: {
             carId: car_id,

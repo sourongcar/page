@@ -3,9 +3,9 @@
  * Created by Administrator on 2017/8/7.
  */
 
-var ip = "http://localhost"
+var ip = "119.29.114.44"
 var port = "8080"
-var projectName = "sourong_car"
+var projectName = "sourongcar"
 
 var tempPort = "8033"
 
@@ -13,7 +13,7 @@ var tempPort = "8033"
 var register_layer_index = "" ;
 var type="";
 function getIndexUrl(){
-    return ip + ":" + tempPort + "/page/index.html"
+    return "http://" +ip + ":" + tempPort + "/page/index.html"
 }
 
 /*
@@ -21,9 +21,15 @@ function getIndexUrl(){
  *
  * */
 function getUrl(){
-    return ip + ":" + port + "/" +  projectName
+    return  "http://"+ip + ":" + port + "/" +  projectName
 }
-
+/*
+ * 获取请求的地址
+ *
+ * */
+function getImgUrl(){
+    return  "http://"+ip + ":" + port + "/" +"/images/"
+}
 /*
  * 获取uuid
  *
