@@ -125,24 +125,17 @@ $(function(){
             consult(productid);
         }else{
             type = "consult";
-            layer.open({
-                type: 0,
-                content:$("#login"),
+            login_layer_index = layer.open({
+                type: 1,
+                content: $("#login"),
                 scrollbar: false,
-                skin:'hint',
-                area:'80vw',
-                btn:[],
-                title:false,
-                shadeClose:true,
-                closeBtn:false,
-                anim:2,
-                time:2000,
-                success:function(layero,index){
-                    $("body").css("overflow","hidden")
-                },
-                end:function(){
-                    $("body").css("overflow","auto")
-                }
+                skin: 'hint',
+                btn: [],
+                title: false,
+                shadeClose: true,
+                closeBtn: false,
+                anim: 2,
+                area:'90%',
             });
         }
     });
