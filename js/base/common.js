@@ -26,7 +26,8 @@ function getUrl(){
 }
 /*
  * 获取请求的地址
- *
+ *  linux上function getImgUrl(){
+        return  "http://"+ip+"/images/"
  * */
 function getImgUrl(){
     return  "http://"+ip + ":" + port +"/images/"
@@ -118,6 +119,7 @@ $("#btn_login").click(function(){
         }else if(type == "collectOnProductDetail"){
             operateUserCollection();
         }
+        window.location.reload();
     });
 });
 /*

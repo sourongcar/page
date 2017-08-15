@@ -22,15 +22,18 @@ $(function(){
             data: {userid: userid, start: start, offset: offset},
             dataType: 'JSON',
             success: function (data) {
-                console.log(data)
                 if(start==0&data.length==0){
                     var html1="<h3 style='margin-top: 10%;margin-bottom:10%;text-align: center;font-size:10vw'>你还没有收藏产品</h3>"
                         +"<a class='btn baguetteBox-button' style='margin-left: 40%;color: #1b6d85' href='/page/index.html'>回到首页</a>"
                     $("#Mycollectionlist").append(html1);
-                    $("#load-label").html("")
+                    $(".load-label").html("")
                 }else {
+                    if (data.length < offset) {
+                        $(".load-label").html("")
+                    }
                     if (start > 0 & data.length < offset) {
-                        $("#load-label").html("")
+                        console.log(123)
+                        $(".load-label").html("")
                     }
                     for (i = 0; i < data.length; i++) {
                         if (data[i].coverpic == null || data[i].coverpic == undefined) {

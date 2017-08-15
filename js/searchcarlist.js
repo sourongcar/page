@@ -164,7 +164,6 @@ $(window).load(function(){
                     });
                 });
                 var i = data.length;
-                console.log(i);
                 if (i < 10) {
                     $("#morebtn").css("display", "none");
                     if (i % 4 == 0 || i == 0) {

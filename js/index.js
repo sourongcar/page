@@ -20,7 +20,7 @@ $.ajax({
         $("#CompanyAddressArea").text(data.companyaddress);
         $("#CompanyPhoneArea").text(data.companyphone);
         $("#ServiceTimeArea").text(data.servicetime);
-        $("#CompanyQRArea").attr("src",'http://119.29.114.44:8080/images/'+data.companyqr);
+        $("#CompanyQRArea").attr("src",getImgUrl()+data.companyqr);
     },
     error: function () {
 

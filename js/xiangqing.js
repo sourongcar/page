@@ -165,15 +165,12 @@ $(function(){
 function operateUserCollection() {
     var productid=+location.search.split('=')[1];
     var userid = window.sessionStorage.getItem("userid");
-    console.log("productid" + productid);
-    console.log("userid" + userid);
     $.ajax({
         url:getUrl()+"/collection/operateUserCollection.action",
         type:"post",
         data:{userid:userid,productid:productid},
         dataType:"json",
         success:function (data) {
-            console.log(data);
             if(productid === data.productid){
                 $('#collection').attr('src','images/after-collect.png');
             }else{
