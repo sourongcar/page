@@ -10,7 +10,7 @@ $(window).load(function(){
      * 判断是否为通过搜索框进入此页面
      */
     if((brandid.split("?")[1].split("=")[0]=="dosearch"&brandid.split("?")[1].split("=")[1]!="")){
-             var dosearch =brandid.split("?")[1].split("=")[1]
+        var dosearch =brandid.split("?")[1].split("=")[1]
 
         $.ajax({
             type: "get",
@@ -77,7 +77,7 @@ $(window).load(function(){
 
 
 
-        }else {
+    }else {
         str = brandid.split("&&");
         var brandid = str[0];
         var pic = str[1];
@@ -98,23 +98,26 @@ $(window).load(function(){
 
                     if (i < 10) {
                         var divs = "<div class='col-xs-3' >";
-                        divs += "<a id='astyle' ><p class='pri chebiao' id='test'>" + n["cartypename"] + "</p></a>";
+                        divs += "<a id='astyle'class='changecolor' ><p class='pri chebiao' id='test'>" + n["cartypename"] + "</p></a>";
                         divs += "</div>";
                         $("#names").children().eq(0).after(divs);
                     } else {
                         var divs = "<div class='col-xs-3  more'   style='display:none'>";
-                        divs += "<a id='astyle'><p class='pri chebiao' id='test'>" + n["cartypename"] + "</p></a>";
+                        divs += "<a id='astyle' class='changecolor'><p class='pri chebiao' id='test'>" + n["cartypename"] + "</p></a>";
                         divs += "</div>";
                         $("#names").children().eq(10).after(divs);
                     }
-                    $("#astyle").click(function () {
+                    $(".changecolor").click(function () {
                         $(this).parent().siblings().children().children().css("color", "black");
                         $(this).children().css("color", "red");
+                    });
+                    $("#getAllcarlist").click(function () {
+                        $(".chebiao").css("color", "black");
                     });
                     /**
                      * 通过车型获取列表
                      */
-                    $("#test").click(function () {
+                    $(".chebiao").click(function () {
                         var cartype = $(this).text();
                         $.ajax({
                             url: getUrl()+'/product/rest/getProductByCarType.action',
@@ -185,16 +188,16 @@ $(window).load(function(){
                 if ((i + 2) % 4 != 0 && i >= 10) {
                     var j = 4 - (i + 2) % 4;
                     if (j == 1) {
-                        var temp = "<div class='col-xs-3'></div>";
+                        var temp = "<div class='col-xs-3 more'style='display:none'></div>";
                         $("#names").append(temp);
                     } else if (j == 2) {
                         for (var k = 0; k < j; k++) {
-                            var temp = "<div class='col-xs-3'></div>";
+                            var temp = "<div class='col-xs-3 more ' style='display:none'></div>";
                             $("#names").append(temp);
                         }
                     } else if (j == 3) {
                         for (var k = 0; k < j; k++) {
-                            var temp = "<div class='col-xs-3'></div>";
+                            var temp = "<div class='col-xs-3 more ' style='display:none'></div>";
                             $("#names").append(temp);
                         }
                     }
@@ -246,7 +249,7 @@ $(window).load(function(){
 
         window.animatelo.bounceInLeft('#logoAction');
 
-     }
+    }
 
 })
 $(function(){

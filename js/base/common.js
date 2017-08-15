@@ -3,10 +3,11 @@
  * Created by Administrator on 2017/8/7.
  */
 
-var ip = "119.29.114.44"
+/*var ip = "119.29.114.44"*/
+var ip = "localhost"
 var port = "8080"
-var projectName = "sourongcar"
-
+/*var projectName = "sourongcar"*/
+var projectName = "sourong_car"
 var tempPort = "8033"
 
 

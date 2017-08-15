@@ -30,7 +30,7 @@ $(function(){
                         }
                         content.find('div').text('');
                         var link=getImgUrl()+data[i].picture;
-                        $('<a href="'+link+'"><img src="'+link+'" style="width: 24vw;;height: 24vw;margin: 0.5vw 0.5vw;float: left"></a>').prependTo(content);
+                        $('<a href="'+link+'"><img src="'+link+'" style="width: 49vw;height: 19vh;margin: 0.5vh 0.5vw;float: left"></a>').prependTo(content);
                     }
                 }
             }
@@ -79,13 +79,13 @@ $(function(){
             data:$.param({userid:userid,productIdList:productIdArray},true),
             dataType:"json",
             success:function (data) {
-                    if(data[0]&&data[0].productid == productid){
-                        $('#collection').attr('src','images/after-collect.png');
-                    }else{
-                        $('#collection').attr('src','images/before_collect.png');
-                    }
+                if(data[0]&&data[0].productid == productid){
+                    $('#collection').attr('src','images/after-collect.png');
+                }else{
+                    $('#collection').attr('src','images/before_collect.png');
                 }
-            });
+            }
+        });
     }
     $("#collection").on("click",function(){
         if(verify()){
@@ -105,12 +105,12 @@ $(function(){
                 area:'90%'
             });
         }
-       /* var src = $("#collection").attr('src');
-        if(src=="images/collection.png"){
-            this.src = "images/after-collect.png";
-        } else{
-            this.src = "images/collection.png";
-        }*/
+        /* var src = $("#collection").attr('src');
+         if(src=="images/collection.png"){
+         this.src = "images/after-collect.png";
+         } else{
+         this.src = "images/collection.png";
+         }*/
     });
     $("#mask").on('click',function(){
         $("#mask").css("display","");
