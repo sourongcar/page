@@ -242,7 +242,8 @@ $(function(){
         type:'POST',
         dataType: "json",
         success:function(data){
-            $("#CompanyAddressArea").text(data.companyaddress);
+            $("#CompanyAddressArea").text(data.companyadress);
+console.log(data);
             $("#CompanyPhoneArea").text(data.companyphone);
             $("#ServiceTimeArea").text(data.servicetime);
             $("#CompanyQRArea").attr("src",getImgUrl()+data.companyqr);

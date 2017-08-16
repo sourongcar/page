@@ -24,7 +24,7 @@ $(function(){
             success: function (data) {
                 if(start==0&data.length==0){
                     var html1="<h3 style='margin-top: 10%;margin-bottom:10%;text-align: center;font-size:10vw'>你还没有收藏产品</h3>"
-                        +"<a class='btn baguetteBox-button' style='margin-left: 40%;color: #1b6d85' href='/page/index.html'>回到首页</a>"
+                        +"<a class='btn baguetteBox-button' style='margin-left: 40%;color: #1b6d85' href='/sourongcar/index.html'>回到首页</a>"
                     $("#Mycollectionlist").append(html1);
                     $(".load-label").html("")
                 }else {
@@ -86,7 +86,7 @@ $(function(){
         type:'POST',
         dataType: "json",
         success:function(data){
-            $("#CompanyAddressArea").text(data.companyaddress);
+            $("#CompanyAddressArea").text(data.companyadress);
             $("#CompanyPhoneArea").text(data.companyphone);
             $("#ServiceTimeArea").text(data.servicetime);
             $("#CompanyQRArea").attr("src",getImgUrl()+data.companyqr);

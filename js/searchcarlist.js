@@ -165,7 +165,7 @@ $(window).load(function(){
                 });
                 var i = data.length;
                 if (i < 10) {
-                    $("#morebtn").css("display", "none");
+                      $("#morebtn").css("display", "none");
                     if (i % 4 == 0 || i == 0) {
                         for (var h = 0; h < 3; h++) {
                             var temp = "<div class='col-xs-3'></div>";
@@ -185,6 +185,7 @@ $(window).load(function(){
                 }
 
                 if ((i + 2) % 4 != 0 && i >= 10) {
+
                     var j = 4 - (i + 2) % 4;
                     if (j == 1) {
                         var temp = "<div class='col-xs-3 more'style='display:none'></div>";
@@ -260,7 +261,7 @@ $(function(){
         type:'POST',
         dataType: "json",
         success:function(data){
-            $("#CompanyAddressArea").text(data.companyaddress);
+            $("#CompanyAddressArea").text(data.companyadress);
             $("#CompanyPhoneArea").text(data.companyphone);
             $("#ServiceTimeArea").text(data.servicetime);
             $("#CompanyQRArea").attr("src",getImgUrl()+data.companyqr);

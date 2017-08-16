@@ -31,7 +31,7 @@ $(function(){
         type:'POST',
         dataType: "json",
         success:function(data){
-            $("#CompanyAddressArea").text(data.companyaddress);
+            $("#CompanyAddressArea").text(data.companyadress);
             $("#CompanyQRArea").attr("src",getImgUrl()+data.companyqr);
         },
         error: function () {

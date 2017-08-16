@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-    <title>汽车详情</title>
+    <title>汽车搜索</title>
     <link rel="stylesheet" href="css/swiper.min.css">
     <link rel="stylesheet" href="css/hwLayer.css">
     <link rel="stylesheet" type="text/css" href="css/Details_Style.css">
@@ -134,7 +134,7 @@
 <body>
 
 <div id="content-wrap" >
-    <div id = "logo" style="text-align: center;width: auto;background: black;padding: 3%;z-index: 99999" >
+    <div id = "logo" style="text-align: center;width: auto;background: black;padding: 3%;z-index: 99999" onclick="location='.'">
          <div style="padding: 2.5% 15%;position: relative">
                 <img src="images/nocarlogo.png"  style="width: 100%;height:auto;">
                 <img src="images/car.png" id="logoAction" style="width:10%;height:auto;top:45%;right:40%;position:absolute">
@@ -170,12 +170,12 @@
         <div class="container">
 
             <div class="row" id="names">
-                <div class="col-xs-3" id="getAllcarlist">
+                <div class="col-xs-3 " id="getAllcarlist">
                     <p style="color: orangered;margin-top: 7px;display: inline-block;text-align: center;" ><div style="display: inline-block;border-left:2px solid orangered;text-align: center;">&nbsp</div>全部：</p>
                 </div>
 
                 <div id="morebtn" class="col-xs-3" >
-                    <div class="car-sign-font" style="color:orangered ;">更多</div>
+                    <div class="car-sign-font" style="color:orangered ">更多</div>
                 </div>
 
                 <div id="offbtn" class="col-xs-3" style="display: none;">
@@ -188,10 +188,10 @@
     </div>
     <!--车型名end-->
     <!--每一款车型-->
-    <dic class="carlistArea">
-    </dic>
+    <div class="carlistArea">
+    </div>
     <link rel="stylesheet" type="text/css" href="css/new_headfoot.css" media="all" />
-    <div class="new-footer" style="padding-top: 30px;">
+    <div class="new-footer" style="padding-top: 30px;margin-top:30vh">
         <div style="padding: 2vw;margin: 1vw;text-align: center">
             <div class="bottom-content">
                 <a href="companyIntro.html">关于搜融</a>
@@ -214,7 +214,7 @@
     <div style="background-color:#717171;height:1vw"></div>
     <div style="background-color:#2f2f2f;height:1vw"></div>
     <div class="hslie" style="background-color: #0b0b0b;padding: 1vw">
-        <p style="text-align: center;font-size: 4vw;color:#ff3709;" id="CompanyAddressArea">© 2017 搜融好车 sourong luxury cars.com</p>
+        <p style="text-align: center;font-size: 4vw;color:#ff3709;" id="CompanyAddressArea"></p>
     </div>
     <!-- -->
 </div>

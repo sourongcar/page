@@ -3,11 +3,11 @@
  * Created by Administrator on 2017/8/7.
  */
 
-/*var ip = "119.29.114.44"*/
-var ip = "localhost"
+var ip = "119.29.114.44"
+/*var ip = "localhost"*/
 var port = "8080"
-/*var projectName = "sourongcar"*/
-var projectName = "sourong_car"
+var projectName = "sourongcar"
+/*var projectName = "sourong_car"*/
 var tempPort = "8033"
 
 
@@ -26,11 +26,12 @@ function getUrl(){
 }
 /*
  * 获取请求的地址
- *  linux上function getImgUrl(){
-        return  "http://"+ip+"/images/"
+ *  linux上
  * */
+/*function getImgUrl(){
+    return  "http://"+ip+ ":" + port+"/images/"*/
 function getImgUrl(){
-    return  "http://"+ip + ":" + port +"/images/"
+    return  "http://"+ip +"/images/"
 }
 /*
  * 获取uuid
