@@ -13,11 +13,15 @@ $(function(){
     //从主页传过来的procductid参数
     var productid=+location.search.split('=')[1];
     $.getJSON(getUrl()+'/carpicture/rest/getFull.action',{productid:productid},function(data){
-        if(!data)
-            return;
-        var swiper=$('#swiper_1'),wapper=$('<div class="swiper-wrapper"/>');
+	var swiper=$('#swiper_1'),wapper=$('<div class="swiper-wrapper"/>');
         var content=$("#mode_content");
         var loopingend=false;
+        $("#confirm-btn").css("display","block");
+	swiper.css({textAlign:'center',lineHeight:'50vw',fontSize:'10vw'}).text('');
+
+        if(!data){
+	     return;
+	}        
         if(data&&data instanceof Array){
             for(var i=0;i<data.length;i++){
                 if(data[i].picture){
@@ -45,18 +49,16 @@ $(function(){
             else{
                 swiper.css({textAlign:'center',lineHeight:'50vw',fontSize:'10vw'}).text('暂无图片');
             }
+
         }
     });
     $.getJSON(getUrl()+'/product/rest/getFull.action',{id:productid},function(data){//json/config.json
         if(data){
-            $('.Details_Price_Title p').text(data.title);
+            $('.Details_Price_Title div p').text(data.title);
             var dpb= $(".Details_Price_Body");
             dpb.find('#marketprice').text("￥"+data.marketprice+"万");
             dpb.find('#sourongprice').text("￥"+data.sourongprice+"万");
             data=data.configuration;
-            if(!data) {
-                return;
-            }
             var dib= $(".Details_Introduce_Body");
             dib.find('#size').text(data.size);
             dib.find('#structure').text(data.structure);
@@ -66,8 +68,11 @@ $(function(){
             dib.find('#comprehensiveoilconsumption').text(data.comprehensiveoilconsumption);
             dib.find('#color').text(data.color);
             dib.find('#warranty').text(data.warranty);
-            dib.find('#transmissioncase').text(data.transmissioncase);
-        }
+            dib.find('#transmissioncase').html(data.transmissioncase);
+        }else{
+                return;
+            }
+
     });
     if(verify()){
         var productIdArray = [];
@@ -87,6 +92,15 @@ $(function(){
             }
         });
     }
+     /**
+      * 判断产品是否下架
+      */
+     var abc = $("#marketprice").text()
+     if(abc=="未知"){
+	var swiper=$('#swiper_1')
+        $("#confirm-btn").css("display","none");
+	swiper.css({textAlign:'center',lineHeight:'50vw',fontSize:'10vw'}).text('产品已下架');
+     }
     $("#collection").on("click",function(){
         if(verify()){
             operateUserCollection();
@@ -243,7 +257,6 @@ $(function(){
         dataType: "json",
         success:function(data){
             $("#CompanyAddressArea").text(data.companyadress);
-console.log(data);
             $("#CompanyPhoneArea").text(data.companyphone);
             $("#ServiceTimeArea").text(data.servicetime);
             $("#CompanyQRArea").attr("src",getImgUrl()+data.companyqr);

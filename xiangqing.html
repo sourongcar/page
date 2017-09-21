@@ -42,6 +42,14 @@
         padding-bottom: 1%;
         padding-right: 3%;
     }
+    table {
+	    width: 95%;
+   	    border: solid 1px;
+	}
+      table td{
+	   border:solid 1px;
+	}
+
 </style>
 <style type="text/css">
     .slideout-menu {
@@ -133,17 +141,21 @@
     </div>
     <!-- 自己页面代码部分添加在此 -->
     <!-- touch -->
-    <div class="swiper-container" id="swiper_1" style="height: 50vw"></div>
+    <div class="swiper-container" id="swiper_1" style="height: 75vw"></div>
     <!-- price -->
     <div class="Details_Price_Title">
-        <p style="display: inline-block;">未知</p>
+        <div class="col-xs-10" style="padding: 0;">
+            <p style="display: inline-block;font-size: 4.5vw;">暂无数据</p>
+	</div>
        <!-- <img src="images/share.png" id="shar_img"> -->
-        <img src="images/collection.png" id="collection">
+	<div class="col-xs-2" style="padding:0;">
+            <img src="images/collection.png" id="collection">
+	</div>
     </div>
     <div class="Details_Price_Body">
         <div class="col-xs-6 col-sm-6">
-            <div style="text-decoration: line-through;height: 8vw"><span>市价：</span><span id="marketprice">未知</span></div>
-            <div style="color: orangered;height: 8vw"><span>搜融：</span><span id="sourongprice">未知</span></div>
+            <div style="text-decoration: line-through;height: 8vw"><span>市价：</span><span id="marketprice">暂无数据</span></div>
+            <div style="color: orangered;height: 8vw"><span>搜融：</span><span id="sourongprice">暂无数据</span></div>
         </div>
         <div style="padding-top: 3vw" class="col-xs-6 col-sm-6">
             <a href="#0" id="confirm-btn">
@@ -155,18 +167,27 @@
         <img src="images/shadow.png" style="width: 100%;height: 5vw">
     </div>
     <!-- introduce -->
-    <div class="Details_Introduce_Title"><span><b>汽车详细信息</b></span></div>
+    <div class="Details_Introduce_Title"><span><b>汽车基本信息</b></span></div>
     <div class="Details_Introduce_Body">
-        <p><span>车身颜色：</span><span id="color">未知</span></p>
-        <p><span>车身尺寸：</span><span id="size">未知</span></p>
-        <p><span>车身结构：</span><span id="structure">未知</span></p>
-        <p><span>发动机：</span><span id="engine">未知</span></p>
-        <p><span>驱动方式：</span><span id="driverway">未知</span></p>
-        <p><span>综合油耗：</span><span id="comprehensiveoilconsumption">未知</span></p>
-        <p><span>车主油耗：</span><span id="mainoilconsumption">未知</span></p>
-        <p><span>整车质保：</span><span id="warranty">未知</span></p>
-        <p><span>变速箱：</span><span id="transmissioncase">未知</span></p>
+        <p><span>车型：</span><span id="comprehensiveoilconsumption">暂无数据</span></p>
+        <p><span>车身颜色：</span><span id="color">暂无数据</span></p>
+        <p><span>车身尺寸：</span><span id="size">暂无数据</span></p>
+        <p><span>车身结构：</span><span id="structure">暂无数据</span></p>
+        <p><span>发动机：</span><span id="engine">暂无数据</span></p>
+        <p><span>驱动方式：</span><span id="driverway">暂无数据</span></p>
+        <p><span>车主油耗：</span><span id="mainoilconsumption">暂无数据</span></p>
     </div>
+    <hr style="border:none;border-top:1px solid #555555;" />
+    <div class="Details_Introduce_Title" style="padding:0vw;padding-bottom: 2vw;"><span><b>汽车详细配置</b></span></div>
+    <div class="Details_Introduce_Body">
+        <p style="width:90%"><span></span><span id="warranty">暂无数据</span></p>
+    </div>
+    <hr style="border:none;border-top:1px solid #555555;" />
+     <div class="Details_Introduce_Title" style="padding:0vw;padding-bottom: 2vw;"><span><b>更多汽车配置</b></span></div>
+    <div class="Details_Introduce_Body" style="table-border:1px solid #F00">
+        <p><span></span><span id="transmissioncase">暂无数据</span></p>
+    </div>
+     <div class="Details_Introduce_Title"><span><b>想知道更多详情，请咨询客服</b></span></div>
     <div class="showmore" style="display: none;text-align: center;margin-top: 5%;margin-bottom: 5%">
         <div style="background-color:#d0d0d0;height:3px"></div>
         <div style="background-color:#A0A0A0;height:3px"></div>
@@ -190,13 +211,13 @@
     <div class="new-footer" style="padding-top: 30px;margin-top:30vh">
         <div style="padding: 2vw;margin: 1vw;text-align: center">
             <div class="bottom-content">
-                <a href="companyIntro.html">关于搜融</a>
+                <a href="companyIntro.html" id="article1">关于搜融</a>
             </div>
             <div class="bottom-content" style="margin: 0 4vw">
-                <a href="productIntro.html" >产品介绍</a>
+                <a href="productIntro.html" id="article2" >产品介绍</a>
             </div>
             <div class="bottom-content">
-                <a href="chehang.html">合作车行</a>
+                <a href="chehang.html" id="article3">合作车行</a>
             </div>
         </div>
         <div class="new-footer-text" >
